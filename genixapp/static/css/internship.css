@@ -1,0 +1,27 @@
+/* ==========================================================================
+   INTERNSHIP TRACKS & TIMELINES
+   ========================================================================== */
+.tracks-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.track-badge-premium {
+  padding: 14px 28px;
+  border-radius: 40px;
+  background: #ffffff;
+  color: var(--gg-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(var(--gg-primary-rgb), 0.08);
+  transition: var(--transition-normal);
+}
+
+.track-badge-premium:hover {
+  background: var(--gg-primary);
+  color: #ffffff;
+  transform: translateY(-4px);
+}

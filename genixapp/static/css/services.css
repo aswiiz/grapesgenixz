@@ -1,0 +1,246 @@
+/*============================================================================
+  SECTION STYLESHEET: PREMIUM SERVICES BENTO GRID SYSTEM
+============================================================================*/
+
+.services-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(240px, auto);
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Base Structural Bento Card */
+.bento-card {
+    position: relative;
+    background: var(--bg-pure);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+}
+
+/* Glass Reflection Glow Overlays */
+.bento-card-glass {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
+    opacity: 0;
+    transition: var(--transition-smooth);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Master Bento Hover Rules */
+.bento-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    border-color: rgba(27, 58, 135, 0.2);
+}
+
+.bento-card:hover .bento-card-glass {
+    opacity: 1;
+}
+
+.bento-content-box {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+/* Icon Shields */
+.bento-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background: var(--primary-glow);
+    color: var(--primary-brand);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.bento-icon-wrapper.accent-icon {
+    background: var(--accent-glow);
+    color: var(--secondary-accent);
+}
+
+.bento-card:hover .bento-icon-wrapper {
+    transform: scale(1.1) rotate(3deg);
+}
+
+/* Text Element Rules */
+.bento-pill-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-brand);
+    background: var(--primary-glow);
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+}
+
+.bento-pill-tag.tag-success {
+    color: var(--secondary-accent);
+    background: var(--accent-glow);
+}
+
+.bento-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+}
+
+.bento-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Specific Grid Mapping Blocks */
+.bento-anchor {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.bento-medium-ai {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.bento-medium-mobile {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.bento-banner {
+    grid-column: span 3;
+    padding: 48px;
+}
+
+/* Graphic Previews and Tags */
+.bento-graphic-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.stack-badge {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 6px 14px;
+    border-radius: var(--border-radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* Long Banner Specific Horizontal Flow */
+.banner-row-layout {
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
+}
+
+.banner-text-side {
+    flex: 1.4;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.banner-stats-side {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.mini-stat-node {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    border-radius: var(--border-radius-md);
+    text-align: center;
+}
+
+.mini-stat-num {
+    display: block;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--primary-brand);
+    margin-bottom: 4px;
+}
+
+.mini-stat-lbl {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Subtle Structural Ambient Lighting Glow Placement */
+.blob-position-3 {
+    bottom: -10%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    opacity: 0.5;
+}
+
+/* Responsive Overrides within standard layout ecosystems */
+@media (max-width: 1024px) {
+    .services-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .bento-anchor {
+        grid-column: span 2;
+    }
+    .bento-banner {
+        grid-column: span 2;
+    }
+    .banner-row-layout {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+    }
+    .banner-stats-side {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+    .bento-anchor, .bento-medium-ai, .bento-medium-mobile, .bento-banner {
+        grid-column: span 1;
+        grid-row: auto;
+    }
+    .bento-card {
+        padding: 32px;
+    }
+    .bento-banner {
+        padding: 32px;
+    }
+}

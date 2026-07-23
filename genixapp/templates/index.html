@@ -1,0 +1,1177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrapesGenix | Premium IT Training & Corporate Placement</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- Font Awesome & Google Fonts Integration -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Spartan:wght@500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+   <header class="navbar">
+
+    <!-- Logo -->
+    <div class="logo">
+
+        <div class="logo-t">G</div>
+
+        <div class="logo-text">
+            <strong>GrapesGenix</strong>
+            <span>Technical Solutions Pvt Ltd</span>
+        </div>
+
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-links">
+
+        <a href="{% url 'home' %}" class="active">Home</a>
+
+        <a href="{% url 'services' %}">Services</a>
+
+        <a href="{% url 'internship' %}">Internship</a>
+
+        <a href="{% url 'projects' %}">Projects</a>
+
+        <a href="{% url 'contact' %}">Contact</a>
+
+        <div class="dropdown">
+
+            <a href="#" class="drop-btn">
+                More
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+
+            <div class="dropdown-content">
+
+                <a href="{% url 'about' %}">About Us</a>
+
+                <a href="{% url 'courses' %}">Courses</a>
+
+                <a href="{% url 'team' %}">Our Team</a>
+
+                <a href="{% url 'ioc' %}">Industry on Campus</a>
+
+                <a href="{% url 'journey' %}">Journey</a>
+
+                <a href="{% url 'faq' %}">FAQ</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- Right Side -->
+    <div class="nav-actions">
+
+        <a href="{% url 'contact' %}" class="btn btn-blue nav-btn">
+            <i class="fa-solid fa-phone"></i>
+            Contact Us
+        </a>
+
+        <button class="menu-icon-btn">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </div>
+
+</header>
+
+   <!-- =========================================
+ HERO SECTION
+========================================== -->
+
+<section class="hero-section" id="hero">
+
+    <!-- Background Video -->
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="{% static 'assets/videos/hero.mp4' %}" type="video/mp4">
+    </video>
+
+    <!-- Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Animated Background Elements -->
+    <div class="hero-gradient"></div>
+    <div class="hero-glow glow-1 layer" data-speed="2"></div>
+    <div class="hero-glow glow-2 layer" data-speed="4"></div>
+    <div class="hero-blob blob-1 layer" data-speed="5"></div>
+    <div class="hero-blob blob-2 layer" data-speed="3"></div>
+    <div class="hero-grid layer" data-speed="1"></div>
+
+    <div class="hero-container">
+
+        <!-- LEFT CONTENT -->
+
+        <div class="glass-hero-card">
+
+            <div class="badge-row">
+
+                <span class="check-badge">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    ISO 9001:2015 Certified • Startup India Recognized
+
+                </span>
+
+            </div>
+
+            <h1>
+
+                Launch Your
+
+                <span class="highlight-text">
+
+                    Tech Career
+
+                    <span class="brush-underline"></span>
+
+                </span>
+
+                with Industry Experts
+
+            </h1>
+
+            <p>
+
+                Founded in <strong>2015</strong>, GrapesGenix Technical Solutions Pvt Ltd bridges academic learning with real software engineering through live software projects, internships, enterprise software development, AI solutions, and industry-oriented training.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#courses" class="btn btn-blue">
+
+                    Explore Courses
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+                <a href="#internship" class="btn btn-yellow">
+
+                    Apply for Internship
+
+                </a>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+
+                    <h3>1000+</h3>
+
+                    <span>Students Trained</span>
+
+                </div>
+
+                <div class="hero-stat">
+
+                    <h3>521+</h3>
+
+                    <span>Projects Delivered</span>
+
+                </div>
+
+                <div class="hero-stat">
+
+                    <h3>15+</h3>
+
+                    <span>Technology Domains</span>
+
+                </div>
+
+                <div class="hero-stat">
+
+                    <h3>10+</h3>
+
+                    <span>Years Experience</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT CONTENT -->
+
+        <div class="hero-graphics">
+
+            <div class="video-card">
+
+                <img src="{% static 'images/office.jpg' %}" alt="Office">
+
+            </div>
+
+            <div class="placed-card card-1">
+
+                <span class="card-tag">
+
+                    Live Project
+
+                </span>
+
+                <img src="{% static 'images/software-team.jpg' %}" alt="Software Team">
+
+                <div class="card-details">
+
+                    <h4>Enterprise Software</h4>
+
+                    <p>Production Level Development</p>
+
+                </div>
+
+            </div>
+
+            <div class="placed-card card-2">
+
+                <span class="card-tag">
+
+                    Internship
+
+                </span>
+
+                <img src="{% static 'images/internship.jpg' %}" alt="Internship">
+
+                <div class="card-details">
+
+                    <h4>Industry Training</h4>
+
+                    <p>Learn • Build • Get Hired</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="scroll-indicator">
+
+        <span></span>
+
+    </div>
+
+</section>
+
+    <!-- ==========================================
+    RECOGNITIONS & AFFILIATIONS
+=========================================== -->
+  <section class="credentials-section">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="section-subtitle">
+                Recognized & Trusted
+            </span>
+
+            <h2>Our Affiliations</h2>
+
+            <p>
+                Recognized by leading government and industry organizations.
+            </p>
+
+        </div>
+
+        <div class="affiliation-grid">
+
+            <div class="affiliation-card">
+                <img src="{% static 'assets/images/mca.png' %}" alt="MCA">
+            </div>
+
+            <div class="affiliation-card">
+                <img src="{% static 'assets/images/msme.png' %}" alt="MSME">
+            </div>
+
+            <div class="affiliation-card">
+                <img src="{% static 'assets/images/iso.png' %}" alt="ISO">
+            </div>
+
+            <div class="affiliation-card">
+                <img src="{% static 'assets/images/ctech.png' %}" alt="CTECH">
+            </div>
+
+            <div class="affiliation-card">
+                <img src="{% static 'assets/images/sted.png' %}" alt="STED">
+            </div>
+
+            <div class="affiliation-card">
+                <img src="{% static 'assets/images/bss.png' %}" alt="BSS">
+            </div>
+
+            <div class="affiliation-card">
+                <img src="{% static 'assets/images/startup.png' %}" alt="Startup India">
+            </div>
+
+            <div class="affiliation-card">
+                <img src="{% static 'assets/images/ksum.png' %}" alt="KSUM">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+   <!-- ===========================
+     ABOUT SECTION
+============================ -->
+<section id="about" class="about-section">
+
+    <!-- Decorative Background -->
+    <div class="about-bg">
+
+        <div class="about-yellow-glow layer" data-speed="1"></div>
+
+        <div class="about-ring layer" data-speed="5"></div>
+
+        <div class="about-dots about-dots-left layer" data-speed="3"></div>
+
+        <div class="about-dots about-dots-bottom layer" data-speed="2"></div>
+
+        <div class="about-circle layer" data-speed="4"></div>
+
+        
+    </div>
+
+    <div class="container">
+
+        <div class="about-grid">
+
+            <!-- LEFT -->
+
+            <div class="about-left">
+                
+
+                <img src="{% static 'assets/images/classroom.png' %}"
+                    class="about-main-image"
+                    alt="Classroom">
+
+                <div class="mentor-card">
+
+                    <img src="{% static 'assets/images/classroom.png' %}"
+                        alt="Mentorship">
+
+                    <div>
+
+                        <h5>Live Mentorship</h5>
+
+                        <span>Senior Tech Architects</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="about-right">
+
+                <p class="section-subtitle">
+
+                    ABOUT GRAPESGENIX
+
+                </p>
+
+                <h2>
+
+                    Get Trained by the
+
+                    <span class="highlight-text">
+
+                        Experts Who Do It Best
+
+                        <span class="brush-underline"></span>
+
+                    </span>
+
+                </h2>
+
+                <!-- Tabs -->
+
+                <div class="about-tabs">
+
+                    <button class="tab active"
+                        data-tab="about">
+
+                        About
+
+                    </button>
+
+                    <button class="tab"
+                        data-tab="mission">
+
+                        Mission
+
+                    </button>
+
+                    <button class="tab"
+                        data-tab="vision">
+
+                        Vision
+
+                    </button>
+
+                </div>
+
+                <!-- About -->
+
+                <div class="tab-content active"
+                    id="about">
+
+                    <p>
+
+                        Founded in <strong>2015</strong>,
+                        GrapesGenix Technical Solutions Pvt Ltd has emerged as one of Kerala's leading technology solution providers and IT training institutes.
+
+                    </p>
+
+                    <p>
+
+                        We specialize in Enterprise Software Development,
+                        Web Engineering,
+                        Mobile Applications,
+                        Industry on Campus initiatives,
+                        Live Projects,
+                        Academic Training,
+                        Internships,
+                        and Career Development Programs.
+
+                    </p>
+
+                </div>
+
+
+                <!-- Mission -->
+
+                <div class="tab-content"
+                    id="mission">
+
+                    <p>
+
+                        Our mission is to bridge the gap between academic education and industrial engineering through practical software development, live projects, internships and expert mentorship.
+
+                    </p>
+
+                </div>
+
+
+                <!-- Vision -->
+
+                <div class="tab-content"
+                    id="vision">
+
+                    <p>
+
+                        To build the next generation of software engineers by empowering students with practical knowledge, innovation, confidence and industry-ready skills.
+
+                    </p>
+
+                </div>
+
+                <!-- Checklist -->
+
+                <ul class="about-list">
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Enterprise Software Development
+
+                    </li>
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Industry Led Internship Programs
+
+                    </li>
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Production Level Live Projects
+
+                    </li>
+
+                </ul>
+
+                <a href="{% url 'services' %}"
+                    class="btn btn-blue">
+
+                    Explore Our Services
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+   <!-- ======================================================
+     INDUSTRY ON CAMPUS PREVIEW SECTION
+====================================================== -->
+<section class="partners-section ioc-preview-section">
+
+    <div class="container">
+
+        <p class="section-subtitle center-text white-text">
+            GRAPESGENIX INITIATIVE
+        </p>
+
+        <h2 class="center-text white-text">
+            Industry on
+            <span class="highlight-text">
+                Campus
+                <span class="brush-underline"></span>
+            </span>
+        </h2>
+
+        <p class="section-description center-text">
+
+            Industry on Campus is a flagship initiative by
+            <strong>GrapesGenix Technical Solutions Pvt. Ltd.</strong>
+            that bridges the gap between academic learning and industry
+            by enabling students to work on real software projects under
+            the guidance of experienced software engineers while pursuing
+            their studies.
+
+        </p>
+
+        <div class="program-highlight-grid">
+
+            <!-- Left -->
+
+            <div class="program-left-card">
+
+                <img src="{% static 'assets/images/ioc/ioc-banner.jpg' %}"
+                     alt="Industry on Campus"
+                     class="training-large-img">
+
+                <div class="enrolled-mini-badge">
+
+                    <i class="fa-solid fa-building-columns"></i>
+
+                    4+ Academic Institution Collaborations
+
+                </div>
+
+            </div>
+
+            <!-- Right -->
+
+            <div class="program-right-content">
+
+                <p class="section-subtitle yellow-text">
+
+                    WHY INDUSTRY ON CAMPUS?
+
+                </p>
+
+                <ul class="checkmark-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Live Software Development Projects
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Industry Mentorship from Active Developers
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Attractive Student Stipends
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Practical Industry Experience Before Graduation
+                    </li>
+
+                </ul>
+
+                <a href="{% url 'ioc' %}" class="btn btn-yellow">
+
+                    Learn More About Industry on Campus
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- COURSE SECTION -->
+    <section class="courses-section" id="courses">
+        <p class="section-subtitle center-text">EXPLORE OUR PROGRAMS</p>
+        <h2 class="center-text">Explore Our Specialized <span class="highlight-text">Courses<span class="brush-underline"></span></span></h2>
+
+        <div class="filter-categories">
+            <span class="cat-pill active">All Programs</span>
+            <span class="cat-pill">Mobile Apps</span>
+            <span class="cat-pill">Full Stack</span>
+            <span class="cat-pill">AI & Analytics</span>
+            <span class="cat-pill">Design & Cyber</span>
+        </div>
+
+        <div class="courses-grid">
+            <!-- Course Card 1: Flutter -->
+            <div class="course-card">
+                <div class="course-card-image-area">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=500" alt="Flutter Program">
+                    <div class="gradient-overlay-card"></div>
+                    <span class="duration-badge">6 Months</span>
+                </div>
+                <div class="course-card-body">
+                    <span class="cat-pill-label">Mobile Apps</span>
+                    <h4>Advanced Flutter Application Architecture</h4>
+                    <div class="rating-row">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="rating-text">(4.9 Rating)</span>
+                    </div>
+                    <div class="card-tech-footer">
+                        <span><i class="fa-solid fa-code"></i> Dart, Firebase, Bloc</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 2: Python Full Stack & AI (Highlighted) -->
+            <div class="course-card highlighted-card">
+                <div class="course-card-image-area">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=500" alt="Python & AI Program">
+                    <div class="gradient-overlay-card"></div>
+                    <span class="duration-badge">7 Months</span>
+                </div>
+                <div class="course-card-body">
+                    <span class="cat-pill-label">Full Stack</span>
+                    <h4>Python Full Stack Development with Generative AI</h4>
+                    <div class="rating-row">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="rating-text">(5.0 Rating)</span>
+                    </div>
+                    <div class="card-tech-footer">
+                        <span><i class="fa-solid fa-code"></i> Django, React, OpenAI API</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 3: Java Enterprise -->
+            <div class="course-card">
+                <div class="course-card-image-area">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=500" alt="Java Enterprise Stack">
+                    <div class="gradient-overlay-card"></div>
+                    <span class="duration-badge">6 Months</span>
+                </div>
+                <div class="course-card-body">
+                    <span class="cat-pill-label">Full Stack</span>
+                    <h4>Java Enterprise Frameworks & Architecture</h4>
+                    <div class="rating-row">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="rating-text">(4.8 Rating)</span>
+                    </div>
+                    <div class="card-tech-footer">
+                        <span><i class="fa-solid fa-code"></i> Spring Boot, Hibernate, AWS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 4: UI/UX Design -->
+            <div class="course-card">
+                <div class="course-card-image-area">
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=500" alt="UI/UX Engineering">
+                    <div class="gradient-overlay-card"></div>
+                    <span class="duration-badge">4 Months</span>
+                </div>
+                <div class="course-card-body">
+                    <span class="cat-pill-label">Design & Cyber</span>
+                    <h4>UI/UX Digital Product Design Engineering</h4>
+                    <div class="rating-row">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="rating-text">(4.9 Rating)</span>
+                    </div>
+                    <div class="card-tech-footer">
+                        <span><i class="fa-solid fa-code"></i> Figma, Wireframing, Handoff</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="center-btn-wrapper">
+            <button class="btn btn-blue OpenModalUniversalBtn">View Full Syllabus Matrix <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </section>
+
+    <!-- STATISTICS SECTION -->
+    <section class="statistics-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon-box"><i class="fa-solid fa-user-graduate"></i></div>
+                <div class="stat-number">1000+</div>
+                <div class="stat-desc">GRADUATED STUDENTS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="stat-number">98%</div>
+                <div class="stat-desc">PLACEMENT SUCCESS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon-box"><i class="fa-solid fa-certificate"></i></div>
+                <div class="stat-number">15+</div>
+                <div class="stat-desc">PRODUCTION DOMAINS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon-box"><i class="fa-solid fa-briefcase"></i></div>
+                <div class="stat-number">150+</div>
+                <div class="stat-desc">CORPORATE HIRING PARTNERS</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE SECTION -->
+    <section class="why-choose-section">
+        <div class="why-choose-header">
+            <p class="section-subtitle center-text">WHY CHOOSE</p>
+            <h2 class="center-text">Why Choose <span class="highlight-text">GrapesGenix?<span class="brush-underline"></span></span></h2>
+            <p class="section-description-sub center-text">What makes GrapesGenix one of Kerala's leading IT training and software development companies</p>
+        </div>
+        
+        <div class="why-choose-grid">
+            <!-- Left Side Composite Visuals -->
+            <div class="why-choose-image-wrapper">
+                <div class="dots-grid dots-why-choose-top"></div>
+                <div class="yellow-accent-dot dot-1"></div>
+                <div class="yellow-accent-dot dot-2"></div>
+                
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600" alt="GrapesGenix Software Engineering Team" class="why-choose-team-img">
+                
+                <!-- Floating Elements Layering Depth -->
+                <span class="top-rated-badge">
+                    <i class="fa-solid fa-star text-yellow"></i> Top Rated Institute
+                </span>
+                <div class="placement-rate-badge">
+                    <h3>98%</h3>
+                    <p>Placement Success</p>
+                </div>
+            </div>
+            
+            <!-- Right Side Feature Stack Cards -->
+            <div class="feature-cards-stack">
+                <!-- Card 01 -->
+                <div class="feature-list-card"> 
+                    <div class="feature-number">01</div>
+                    <div class="feature-icon-square"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div class="feature-content">
+                        <h4>Industry-Driven Training</h4>
+                        <p>Learn from active software engineers working on real client projects.</p>
+                    </div>
+                </div>
+                <!-- Card 02 -->
+                <div class="feature-list-card">
+                    <div class="feature-number">02</div>
+                    <div class="feature-icon-square"><i class="fa-solid fa-cubes"></i></div>
+                    <div class="feature-content">
+                        <h4>Real-Time Live Projects</h4>
+                        <p>Build enterprise-grade applications instead of only academic assignments.</p>
+                    </div>
+                </div>
+                <!-- Card 03 -->
+                <div class="feature-list-card">
+                    <div class="feature-number">03</div>
+                    <div class="feature-icon-square"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="feature-content">
+                        <h4>Expert Mentors</h4>
+                        <p>Receive one-on-one guidance from experienced developers and technical architects.</p>
+                    </div>
+                </div>
+                <!-- Card 04 -->
+                <div class="feature-list-card">
+                    <div class="feature-number">04</div>
+                    <div class="feature-icon-square"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <div class="feature-content">
+                        <h4>Career & Placement Support</h4>
+                        <p>Resume preparation, mock interviews, aptitude training, and placement assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LARGE DISPLAY COMPOSITION -->
+    <section class="large-image-display-section">
+        <div class="floating-accent-ball"></div>
+        <div class="large-image-container">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200" alt="Advanced Coding Sandbox Lab" class="centered-hero-image">
+            <div class="image-floating-info-card">
+                <div class="info-card-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div>
+                    <h4>Enterprise Lab System</h4>
+                    <p>Live Environment Simulation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================
+TESTIMONIALS SECTION
+================================================------- -->
+
+
+<section class="testimonial-section">
+
+<div class="left-content">
+
+<p class="small-title">TESTIMONIALS</p>
+
+<h2>
+What Our Students Have To Say
+</h2>
+
+<p class="subtitle">
+Real Stories, Incredible Journey
+</p>
+
+<a href="#" class="btn">
+View All →
+</a>
+
+</div>
+
+<div class="slider">
+
+<div class="track">
+
+<div class="card">
+<div class="quote">❝</div>
+        <p>Best project centre for academic projects. I am fully satisfied with the service. The training was excellent, support was timely, and I completed my academic project successfully with a great presentation.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Jack Daniel</h3>
+        <span>Academic Project</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>Excellent place for internships in BTech Computer Science. Experienced staff in Artificial Intelligence and Machine Learning. Gopi Sir is very supportive.</p>
+        <div class="stars">★★★★★</div>
+        <h3>CT Internship</h3>
+        <span>AI & ML Internship</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>GrapesGenix is an amazing place for learning and growing. The trainers are friendly and supportive, and the peaceful environment makes learning enjoyable.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Hari Nivesh K S</h3>
+        <span>Student</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>Our team completed our project successfully with the help of GrapesGenix. Excellent infrastructure, laptops, training, and project support throughout.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Online MarketPlace</h3>
+        <span>Project Team</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>We completed our RFID Based Smart Shopping Cart project with the guidance of GrapesGenix. They supported us in coding, hardware setup, and project execution until successful completion.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Pavithra</h3>
+        <span>RFID Project</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>Amazing experience with affordable fees, experienced teachers, excellent classrooms, and laboratory facilities. Timely project support ensured successful completion.</p>
+        <div class="stars">★★★★★</div>
+        <h3>project2025 grapes</h3>
+        <span>Project Training</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>Working at GrapesGenix was a wonderful experience. I improved my technical skills, gained industry knowledge, and worked on multiple real-world software projects.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Anson</h3>
+        <span>Software Developer</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>Working as a Python Django Lecturer at GrapesGenix was a great experience. The management and founders provide excellent support for both staff and students.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Muhammed Zaheer</h3>
+        <span>Python Django Lecturer</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>A truly positive experience. I learned many new technologies, improved my Android development skills, and enjoyed a friendly, motivating work environment.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Gopika Skandhakumar</h3>
+        <span>Android Developer</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>The Domain Hosting and Management training was fantastic. The trainer was knowledgeable and explained everything clearly with practical insights.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Abhilash Kg</h3>
+        <span>Domain Hosting</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>Outstanding Domain Hosting training. I gained practical knowledge, and the instructors were always ready to help. Highly recommended.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Vibi Surya</h3>
+        <span>Domain Hosting</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>The Mobile App Development course was excellent. The instructors were knowledgeable, encouraging, and the practical projects were highly beneficial.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Lakshmipriya Thiyagarajan</h3>
+        <span>Mobile App Development</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>The Mobile App Development and UI/UX Design training was outstanding. The trainers were supportive, and the hands-on projects made learning practical and enjoyable.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Preethaji S Pradeep</h3>
+        <span>UI/UX & App Development</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>I completed a four-month Android App Development internship at GrapesGenix. Working on multiple Android projects gave me valuable real-world experience.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Adhithyan KS</h3>
+        <span>Android Internship</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>The Java, Python, and PHP training programs are practical and career-oriented. They helped improve my programming skills for internships and jobs.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Hgcvki Hggi8</h3>
+        <span>Programming Training</span>
+    </div>
+
+    <div class="card">
+        <div class="quote">❝</div>
+        <p>Excellent Machine Learning internship. The trainers explained complex concepts clearly and created a supportive learning environment. Highly recommended.</p>
+        <div class="stars">★★★★★</div>
+        <h3>Sheena Titus</h3>
+        <span>Machine Learning Internship</span>
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+    <!-- LEAD CAPTURE MODAL OVERLAY -->
+    <div class="modal-overlay">
+        <div class="modal-container">
+            <header class="modal-header">
+                <button class="modal-close-btn" aria-label="Close Modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <h3>Connect With Career Admissions</h3>
+                <p>Unlock custom payment options, syllabus blueprints and roadmap options</p>
+                <span class="modal-trust-badge"><i class="fa-solid fa-shield-halved"></i> 100% Privacy Protected</span>
+            </header>
+            <div class="modal-body">
+                <form class="modal-form" method="POST" action="{% url 'home' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter mobile number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Tech Discipline</label>
+                        <select name="discipline" required>
+                            <option value="" disabled selected>Select development path</option>
+                            <option value="flutter">Flutter Application Architecture</option>
+                            <option value="python">Python Full Stack &amp; Gen AI</option>
+                            <option value="java">Java Enterprise Spring Boot</option>
+                            <option value="uiux">UI/UX Digital Design</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-yellow submit-cta-btn">Initiate Profile Audit <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- STREAMLINED FIXED INTERACTION UTILITIES STACK -->
+    <div class="fixed-actions-vertical-stack">
+        <a href="https://wa.me/917356713111" class="fixed-action-circle whatsapp-chat-btn" target="_blank" aria-label="WhatsApp Technical Desk"><i class="fa-brands fa-whatsapp"></i></a>
+        <button class="fixed-action-circle enquiry-modal-trigger-btn" aria-label="Open Admissions Request Form"><i class="fa-solid fa-envelope"></i></button>
+        <button class="fixed-action-circle scroll-top-utility-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" aria-label="Scroll Back To Top"><i class="fa-solid fa-chevron-up"></i></button>
+    </div>
+
+    <!-- MASTER DEEP DARK FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-cta-strip">
+            <div class="footer-cta-text">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <span>Get weekly architecture blueprints & hiring notifications</span>
+            </div>
+            <div class="footer-form">
+                <input type="email" placeholder="Enter your business email address">
+                <button class="btn btn-yellow">Subscribe</button>
+            </div>
+        </div>
+
+        <div class="footer-grid-links">
+            <div class="footer-col brand-col">
+                <div class="logo inverted-logo">
+                    <span class="logo-t">G</span><strong>GrapesGenix</strong><span class="location">Thrissur</span>
+                </div>
+                <p class="brand-desc">Accelerating technology talent acquisition through high-tier, verified engineering preparation frameworks.</p>
+                <div class="footer-contact-info">
+                    <p style="margin-bottom: 6px;"><i class="fa-solid fa-phone"></i> 09744112113</p>
+                    <p style="margin-bottom: 6px;"><i class="fa-solid fa-phone"></i> 07736563694</p>
+                    <p><i class="fa-solid fa-envelope"></i> mail@grapestechs.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>QUICK LINKS</h3>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'courses' %}">Courses</a></li>
+                    <li><a href="{% url 'internship' %}">Internship</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'projects' %}">Projects</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>CORE DISCIPLINES</h3>
+                <ul>
+                    <li><a href="#">Flutter App Engineering</a></li>
+                    <li><a href="#">Python Architecture &amp; AI</a></li>
+                    <li><a href="#">Java Corporate Systems</a></li>
+                    <li><a href="#">UI/UX Digital Products</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col locations-col">
+                <h3>CAMPUS LOCATION</h3>
+                <div class="loc-item">
+                    <h5><i class="fa-solid fa-location-dot"></i> GrapesGenix Thrissur HQ</h5>
+                    <p>Gate No 71, Parakott Lane, Patturaikkal, Thrissur - 680020</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 GrapesGenix Technical Solutions Pvt Ltd. All Rights Reserved.</p>
+            <div class="bottom-policy-links">
+                <a href="#">Privacy Framework</a> | <a href="#">Terms of Engagement</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Layer Cursors -->
+    <div class="cursor-dot"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modalOverlay = document.querySelector('.modal-overlay');
+            const closeBtn = document.querySelector('.modal-close-btn');
+            const triggers = document.querySelectorAll('.enquiry-modal-trigger-btn, .OpenModalUniversalBtn, #navEnquiryBtn');
+
+            triggers.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    modalOverlay.style.display = 'flex';
+                });
+            });
+
+            if (closeBtn && modalOverlay) {
+                closeBtn.addEventListener('click', () => {
+                    modalOverlay.style.display = 'none';
+                });
+                modalOverlay.addEventListener('click', (e) => {
+                    if(e.target === modalOverlay) modalOverlay.style.display = 'none';
+                });
+            }
+
+            const tabItems = document.querySelectorAll('.about-tabs .tab-item');
+            const tabPanes = document.querySelectorAll('.tab-content-wrapper .tab-pane');
+
+            tabItems.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabItems.forEach(item => item.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    
+                    tab.classList.add('active');
+                    const targetId = tab.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+/* ==========================================================================
+   TYPOGRAPHY & HEADING PRESETS
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--gg-dark);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1 { font-size: 2.85rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+
+p {
+  font-size: 0.95rem;
+  color: var(--gg-text);
+}
+
+.section-subtitle {
+  color: var(--gg-primary);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}

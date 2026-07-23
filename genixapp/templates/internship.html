@@ -1,0 +1,404 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry Internship Program | GrapesGenix</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Spartan:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/internship.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    
+    <style>
+        /* Layout Integrity CSS */
+        .internship-hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: var(--bg-dark-gradient);
+            padding: 160px 0 100px;
+            overflow: hidden;
+        }
+        .particle-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 0);
+            background-size: 24px 24px;
+            pointer-events: none;
+        }
+        .wave-bottom {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 60px;
+            background: var(--bg-light);
+            clip-path: ellipse(60% 100% at 50% 100%);
+        }
+        .roadmap-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+            position: relative;
+        }
+        .roadmap-step {
+            background: var(--white);
+            padding: 24px 15px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+        .roadmap-step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-top-color: var(--secondary);
+        }
+        .roadmap-step .step-num {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .project-build-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .project-build-card {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .project-build-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .project-build-card img {
+            width: 100%; height: 180px; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .project-build-card:hover img { transform: scale(1.06); }
+        .project-build-body { padding: 25px; }
+        .benefit-badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .benefit-badge-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: var(--shadow-sm);
+        }
+        .faq-accordion { max-width: 800px; margin: 40px auto 0; }
+        .faq-item { background: var(--white); margin-bottom: 15px; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); overflow: hidden; }
+        .faq-question { padding: 20px 25px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; color: var(--dark); }
+        .faq-answer { padding: 0 25px; max-height: 0; overflow: hidden; transition: all 0.3s ease; opacity: 0; color: var(--text); font-size: 0.95rem; }
+        .faq-item.active .faq-answer { padding-bottom: 20px; max-height: 200px; opacity: 1; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); color: var(--primary); }
+
+        /* Modal Overlay & Scroll Lock Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-overlay.active { 
+            display: flex; 
+        }
+
+        .modal-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* Alert Banners */
+        .alert-banner {
+            max-width: 850px;
+            margin: 20px auto 0;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .alert-banner.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-banner.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body style="background: var(--bg-light);">
+
+    <!-- ==========================================================================
+         [01] NAVIGATION DECK
+         ========================================================================== -->
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='{% url 'home' %}'">
+            <div class="logo-t">G</div>
+            <div class="logo-text"><strong>GrapesGenix</strong><span>Technical Academy</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'courses' %}">Courses</a>
+            <a href="{% url 'internship' %}" class="active">Internship</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'home' %}#about">About</a>
+        </div>
+        <div class="nav-actions">
+            <button class="btn btn-blue enquiry-modal-trigger-btn">Apply Now</button>
+            <i class="fas fa-bars menu-icon-btn"></i>
+        </div>
+    </nav>
+
+    <!-- Success / Error Flash Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert-banner {% if message.tags %}{{ message.tags }}{% endif %}">
+                <i class="fas {% if message.tags == 'success' %}fa-check-circle{% else %}fa-exclamation-circle{% endif %}"></i> {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- ==========================================================================
+         [02] HERO SECTION
+         ========================================================================== -->
+    <section class="internship-hero">
+        <div class="particle-overlay"></div>
+        <div class="container" style="grid-template-columns: 1fr; text-align: center;">
+            <div class="glass-hero-card" style="max-width: 850px; margin: 0 auto;">
+                <span class="section-subtitle" style="color: var(--secondary); letter-spacing: 2px;">INDUSTRY INTERNSHIP PROGRAM</span>
+                <h1 style="color: var(--white); font-size: 46px; margin: 15px 0 20px;">Learn • Build • Get Hired</h1>
+                <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 35px;">
+                    Production-Level Internship Framework Designed by Active Software Engineers. Transition seamlessly from static learning to deployed real-world environments.
+                </p>
+                <div class="grid-layout-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 40px; color: var(--white); text-align: left;">
+                    <div style="font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Live Projects</div>
+                    <div style="font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Real Clients</div>
+                    <div style="font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Mentorship</div>
+                    <div style="font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Certified Intern</div>
+                </div>
+                <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                    <button class="btn btn-yellow enquiry-modal-trigger-btn">Apply Online Now</button>
+                    <button class="btn" style="border: 1px solid var(--white); color: var(--white);">Download Syllabus Brochure</button>
+                </div>
+            </div>
+        </div>
+        <div class="wave-bottom"></div>
+    </section>
+
+    <!-- ==========================================================================
+         [03] INTERNSHIP CATEGORIES & DIRECTORY
+         ========================================================================== -->
+    <section class="courses-section" style="padding-top: 60px;">
+        <div class="container">
+            <div class="center-text">
+                <span class="section-subtitle">Programs Catalog</span>
+                <h2>Select Your Target Engineering Domain</h2>
+            </div>
+
+            <div class="filter-categories" style="margin-bottom: 50px;">
+                <span class="cat-pill active">All Programs</span>
+                <span class="cat-pill">Python Stack</span>
+                <span class="cat-pill">Flutter Mobile</span>
+                <span class="cat-pill">MERN Architecture</span>
+                <span class="cat-pill">UI/UX Layout</span>
+                <span class="cat-pill">Java Enterprise</span>
+                <span class="cat-pill">Cyber Security</span>
+                <span class="cat-pill">AI & ML</span>
+            </div>
+
+            <div class="courses-grid">
+                
+                <div class="course-card">
+                    <div class="course-card-image-area">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Python Internship">
+                        <span class="duration-badge">3 Months</span>
+                    </div>
+                    <div class="course-card-body">
+                        <span class="cat-pill-label">Back-End Engineering</span>
+                        <h4>Python Stack Internship</h4>
+                        <ul class="about-checklist" style="margin: 15px 0 25px; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+                            <li style="font-size: 0.9rem; margin:0;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> Live Production Server Modules</li>
+                            <li style="font-size: 0.9rem; margin:0;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> Experience Certificate Validation</li>
+                            <li style="font-size: 0.9rem; margin:0;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> Assigned Engineering Lead</li>
+                        </ul>
+                        <button class="btn btn-blue enquiry-modal-trigger-btn" style="width: 100%; justify-content: center;">Apply Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-card-image-area">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80" alt="Flutter Internship">
+                        <span class="duration-badge">3 Months</span>
+                    </div>
+                    <div class="course-card-body">
+                        <span class="cat-pill-label">Mobile Systems</span>
+                        <h4>Flutter App Development</h4>
+                        <ul class="about-checklist" style="margin: 15px 0 25px; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+                            <li style="font-size: 0.9rem; margin:0;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> Cross-Platform App Architectures</li>
+                            <li style="font-size: 0.9rem; margin:0;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> PlayStore Target Implementations</li>
+                            <li style="font-size: 0.9rem; margin:0;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> Dedicated Technical Mentor</li>
+                        </ul>
+                        <button class="btn btn-blue enquiry-modal-trigger-btn" style="width: 100%; justify-content: center;">Apply Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-card-image-area">
+                        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=600&q=80" alt="MERN Stack Internship">
+                        <span class="duration-badge">3 Months</span>
+                    </div>
+                    <div class="course-card-body">
+                        <span class="cat-pill-label">Full Stack</span>
+                        <h4>MERN Architecture Track</h4>
+                        <ul class="about-checklist" style="margin: 15px 0 25px; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+                            <li style="font-size: 0.9rem; margin:0;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> Modern Engine Rest Hooks</li>
+                            <li style="font-size: 0.9rem; margin:0;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> Distributed System Modeling</li>
+                            <li style="font-size: 0.9rem; margin:0;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> Cloud Infrastructure Deployments</li>
+                        </ul>
+                        <button class="btn btn-blue enquiry-modal-trigger-btn" style="width: 100%; justify-content: center;">Apply Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [04] APPLICATION MODAL POPUP
+         ========================================================================== -->
+    <div class="modal-overlay" id="enquiryModal">
+        <div class="modal-card">
+            <span class="modal-close-btn" id="closeModalBtn">&times;</span>
+            <h3 style="margin-bottom: 20px; color: var(--primary);">Apply for Internship</h3>
+            
+            <form method="POST" action="{% url 'internship' %}">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" class="form-control" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" class="form-control" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" name="phone" class="form-control" required placeholder="+91 xxxxxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>College / Institution</label>
+                    <input type="text" name="college" class="form-control" placeholder="college name">
+                </div>
+                <div class="form-group">
+                    <label>Domain Target</label>
+                    <select name="course" class="form-control" required>
+                        <option value="Python Stack Internship">Python Stack Internship</option>
+                        <option value="Flutter App Development">Flutter App Development</option>
+                        <option value="MERN Architecture Track">MERN Architecture Track</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Learning Mode</label>
+                    <select name="learning_mode" class="form-control" required>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Offline">Offline</option>
+                        <option value="Online">Online</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Additional Notes / Message</label>
+                    <textarea name="message" class="form-control" rows="3" placeholder="Tell us about your background..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-blue" style="width: 100%; justify-content: center; margin-top: 10px;">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         [05] FOOTER
+         ========================================================================== -->
+    <footer class="main-footer">
+        <div class="footer-bottom" style="border: none; padding-top: 0; margin-top: 0;">
+            <p>&copy; 2026 GrapesGenix Technical Academy. All rights reserved.</p>
+            <div class="bottom-policy-links">
+                <a href="{% url 'home' %}">Return to Hub Layout</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Layer for Accordion & Modal Controls -->
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Modal Operations with Background Lock
+        const modal = document.getElementById('enquiryModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const triggerBtns = document.querySelectorAll('.enquiry-modal-trigger-btn');
+
+        function openModal() {
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        }
+
+        triggerBtns.forEach(btn => btn.addEventListener('click', openModal));
+        closeModalBtn.addEventListener('click', closeModal);
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    </script>
+</body>
+</html>

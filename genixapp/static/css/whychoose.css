@@ -1,0 +1,21 @@
+/* ==========================================================================
+   WHY CHOOSE US / VALUE PROPOSITIONS
+   ========================================================================== */
+.feature-block-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.feature-img-box {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 400px;
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-img-box img {
+  width: 100%; height: 100%; object-fit: cover;
+}

@@ -1,0 +1,792 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Our Corporate Profile & Tech Ecosystem | GrapesGenix</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Spartan:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Primary Style Core Dependency -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <style>
+        /* ==========================================================================
+           HEADER NAVIGATION BAR (UPGRADED)
+           ========================================================================== */
+
+        :root {
+            --nav-bg: rgba(15, 23, 42, 0.92);
+            --nav-height: 82px;
+            --nav-border: rgba(255, 255, 255, 0.08);
+            --accent-color: #FFC107;
+            --brand-gradient: linear-gradient(135deg, #7C3AED, #A855F7);
+            --text-primary: #FFFFFF;
+            --text-muted: #BFC8D8;
+            --transition-fast: 0.3s ease;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 9999;
+            border-bottom: 1px solid var(--nav-border);
+            transition: background var(--transition-fast);
+        }
+
+        .nav-container {
+            max-width: 1320px;
+            width: 100%;
+            margin: 0 auto;
+            height: 100%;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        /* ================= Logo ================= */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-t {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--brand-gradient);
+            color: var(--text-primary);
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+            transition: transform var(--transition-fast);
+        }
+
+        .logo:hover .logo-t {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-text strong {
+            color: var(--text-primary);
+            font-size: 24px;
+            font-weight: 700;
+            white-space: nowrap;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        /* ================= Menu ================= */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            position: relative;
+            padding: 6px 0;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            border-radius: 2px;
+            transition: width var(--transition-fast), left var(--transition-fast);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* ================= Right Side Actions ================= */
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .direct-mail {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: color var(--transition-fast);
+        }
+
+        .direct-mail:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Hamburger Trigger Toggle */
+        .menu-icon-btn {
+            display: none;
+            font-size: 22px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+
+        .menu-icon-btn:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Adaptive Layout */
+        @media (max-width: 992px) {
+            .menu-icon-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                height: calc(100vh - var(--nav-height));
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 28px;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+            }
+        }
+
+        /* About-Specific Extension Stylesheet Layer */
+        .about-hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: var(--bg-dark-gradient);
+            padding: 160px 0 100px;
+            overflow: hidden;
+        }
+        .particle-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+            background-size: 35px 35px;
+            pointer-events: none;
+        }
+        .about-section {
+            padding: 90px 0;
+            background: var(--bg-light);
+        }
+        .about-section:nth-of-type(even) {
+            background: var(--white);
+        }
+        
+        /* Layout Structures */
+        .split-layout-50 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        /* Premium Dual Mission/Vision Cards */
+        .mv-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 45px 40px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(27, 58, 137, 0.04);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 6px; height: 100%;
+            background: var(--primary);
+        }
+        .mv-card.vision-card::before {
+            background: var(--secondary);
+        }
+        .mv-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(27, 58, 137, 0.1);
+        }
+        
+        /* Pure CSS Timeline Architecture */
+        .timeline-container {
+            position: relative;
+            max-width: 900px;
+            margin: 50px auto 0;
+            padding: 20px 0;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0; left: 50%;
+            width: 4px;
+            background: rgba(27, 58, 137, 0.1);
+            transform: translateX(-50%);
+        }
+        .timeline-node {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+        .timeline-node.left-node { left: 0; text-align: right; }
+        .timeline-node.right-node { left: 50%; text-align: left; }
+        .timeline-badge {
+            position: absolute;
+            top: 25px;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: var(--shadow-sm);
+        }
+        .left-node .timeline-badge { right: -12px; }
+        .right-node .timeline-badge { left: -12px; }
+        .timeline-content-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: inline-block;
+            text-align: left;
+            width: 100%;
+        }
+        .timeline-year-tag {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        /* Value Grid Module */
+        .value-pill-box {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+        .value-pill-box:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-4px);
+        }
+
+        /* Achievement Ribbon Frame */
+        .badge-marquee-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .achievement-badge-card {
+            background: var(--white);
+            padding: 20px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(27, 58, 137, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+        .achievement-badge-card i {
+            color: var(--secondary);
+        }
+
+        /* Tech Expertise Stack Grid */
+        .tech-stack-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 45px;
+        }
+        .tech-stack-item {
+            background: var(--white);
+            padding: 18px 10px;
+            border-radius: 14px;
+            text-align: center;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+        .tech-stack-item:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: scale(1.04);
+        }
+
+        @media (max-width: 768px) {
+            .split-layout-50 { grid-template-columns: 1fr; }
+            .timeline-container::before { left: 20px; }
+            .timeline-node { width: 100%; padding-left: 45px; padding-right: 0; text-align: left !important; }
+            .timeline-badge { left: 8px !important; }
+            .timeline-node.right-node { left: 0; }
+        }
+    </style>
+</head>
+<body style="background: var(--bg-light);">
+
+    <!-- ==========================================================================
+         [01] NAVIGATION DECK
+         ========================================================================== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="logo">
+                <div class="logo-t">G</div>
+                <div class="logo-text"><strong>GrapesGenix</strong><span>Technical Solutions</span></div>
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'courses' %}">Courses</a>
+                <a href="{% url 'internship' %}">Internship</a>
+                <a href="{% url 'services' %}">Services</a>
+                <a href="{% url 'projects' %}">Projects</a>
+                <a href="{% url 'contact' %}">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="{% url 'contact' %}" class="btn btn-blue">Get Architecture Blueprint</a>
+                <i class="fas fa-bars menu-icon-btn" id="menuToggle"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- ==========================================================================
+         [02] HERO BANNER
+         ========================================================================== -->
+    <section class="about-hero">
+        <div class="particle-overlay"></div>
+        <div class="container" style="grid-template-columns: 1fr; text-align: center;">
+            <div class="glass-hero-card" style="max-width: 880px; margin: 0 auto;">
+                <span class="section-subtitle" style="color: var(--secondary); letter-spacing: 2px;">CORPORATE PROFILE</span>
+                <h1 style="color: var(--white); font-size: 44px; margin: 15px 0 20px; line-height: 1.25;">Get Trained by the Experts Who Do It Best</h1>
+                <p style="color: rgba(255,255,255,0.85); max-width: 700px; margin: 0 auto 35px; font-size: 0.98rem; line-height: 1.6;">
+                    Since 2015, GrapesGenix Technical Solutions has been transforming students into industry-ready professionals while delivering innovative software solutions for enterprise businesses.
+                </p>
+                <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                    <a href="{% url 'courses' %}" class="btn btn-blue">Explore Courses Pipeline</a>
+                    <a href="{% url 'contact' %}" class="btn btn-yellow">Contact Us Router</a>
+                </div>
+            </div>
+        </div>
+        <div class="wave-bottom" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; background: var(--bg-light); clip-path: ellipse(60% 100% at 50% 100%);"></div>
+    </section>
+
+    <!-- ==========================================================================
+         [03] OUR STORY
+         ========================================================================== -->
+    <section class="about-section">
+        <div class="container">
+            <div class="split-layout-50">
+                <div class="image-box-wrapper" style="background: #eef2f7; border-radius: 24px; min-height: 400px; position: relative; overflow: hidden; box-shadow: var(--shadow-md);">
+                    <!-- Placeholder Graphic Node representing technical workspace -->
+                    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(135deg, rgba(27,58,137,0.1), rgba(255,199,44,0.05)); display:flex; align-items:center; justify-content:center;">
+                        <i class="fas fa-cubes" style="font-size: 5rem; color: rgba(27,58,137,0.15);"></i>
+                    </div>
+                    <img src="{% static 'images/about/office-matrix.jpg' %}" alt="GrapesGenix Structural Operations" style="width:100%; height:100%; object-fit:cover; display:block; position:relative; z-index:2;">
+                </div>
+                <div>
+                    <span class="section-subtitle">OUR FOUNDATIONAL STORY</span>
+                    <h2 style="margin: 10px 0 20px;">Architecting Systems Since 2015</h2>
+                    <p style="color: var(--text); line-height: 1.7; margin-bottom: 25px; font-size: 0.95rem;">
+                        Founded in 2015, GrapesGenix Technical Solutions Pvt Ltd has emerged as a premier technology solution provider and IT training institute in Kerala. We build elite production capabilities across multiple vectors.
+                    </p>
+                    <div class="feature-list-checkmarks" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; color: var(--dark); font-weight: 600; font-size: 0.88rem;">
+                        <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Enterprise Software Dev</div>
+                        <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Mobile App Engineering</div>
+                        <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Web Engineering Frameworks</div>
+                        <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Industry on Campus Tracks</div>
+                        <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Academic Training Systems</div>
+                        <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Corporate Solutions Modules</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [04] COMPANY OVERVIEW
+         ========================================================================== -->
+    <section class="about-section" style="background: var(--white);">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <span class="section-subtitle">WHO WE ARE</span>
+                <h2 style="margin: 10px 0 20px;">Bridging The Industry-Academia Divide</h2>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text); font-weight: 400;">
+                    GrapesGenix is committed to bridging the gap between academic theory and industrial engineering by providing students with production-level software development experience. Every learner works on real projects under the direct mentorship of active software engineers.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [05] MISSION & VISION
+         ========================================================================== -->
+    <section class="about-section">
+        <div class="container">
+            <div class="split-layout-50" style="gap: 35px;">
+                
+                <!-- Mission Card -->
+                <div class="mv-card">
+                    <div style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"><i class="fas fa-bullseye"></i></div>
+                    <h3 style="margin-bottom: 15px; color: var(--dark);">Our Mission</h3>
+                    <p style="font-size: 0.92rem; line-height: 1.6; color: var(--text);">
+                        To bridge the gap between academic theory and industrial engineering by providing high-quality software services, practical technical training, and production-level project experience that prepares students for successful careers.
+                    </p>
+                </div>
+
+                <!-- Vision Card -->
+                <div class="mv-card vision-card">
+                    <div style="font-size: 2rem; color: var(--secondary); margin-bottom: 15px;"><i class="fas fa-eye"></i></div>
+                    <h3 style="margin-bottom: 15px; color: var(--dark);">Our Vision</h3>
+                    <p style="font-size: 0.92rem; line-height: 1.6; color: var(--text);">
+                        To cultivate the next generation of engineers by empowering them with the skills, innovation, and confidence to transform ideas into active technologies that benefit businesses and society.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [06] JOURNEY TIMELINE
+         ========================================================================== -->
+    <section class="about-section" style="background: var(--white);">
+        <div class="container">
+            <div class="center-text">
+                <span class="section-subtitle">OUR EVOLUTION</span>
+                <h2>The Journey Timeline</h2>
+            </div>
+            
+            <div class="timeline-container">
+                
+                <!-- Node 2015 -->
+                <div class="timeline-node left-node">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content-card">
+                        <div class="timeline-year-tag">2015</div>
+                        <h4 style="margin-bottom: 5px;">Company Founded</h4>
+                        <p style="font-size: 0.85rem; color: var(--text);">Initial operations footprint established inside regional core tech clusters.</p>
+                    </div>
+                </div>
+
+                <!-- Node 2017 -->
+                <div class="timeline-node right-node">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content-card">
+                        <div class="timeline-year-tag">2017</div>
+                        <h4 style="margin-bottom: 5px;">Software Services Expanded</h4>
+                        <p style="font-size: 0.85rem; color: var(--text);">Scaled full structural arrays targeting multi-tenant enterprise clients.</p>
+                    </div>
+                </div>
+
+                <!-- Node 2019 -->
+                <div class="timeline-node left-node">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content-card">
+                        <div class="timeline-year-tag">2019</div>
+                        <h4 style="margin-bottom: 5px;">Industry on Campus</h4>
+                        <p style="font-size: 0.85rem; color: var(--text);">Launched interactive engineering validation hubs safely inside academic fields.</p>
+                    </div>
+                </div>
+
+                <!-- Node 2021 -->
+                <div class="timeline-node right-node">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content-card">
+                        <div class="timeline-year-tag">2021</div>
+                        <h4 style="margin-bottom: 5px;">1000+ Students Metric</h4>
+                        <p style="font-size: 0.85rem; color: var(--text);">Passed critical metrics of active technical student profiling tracks.</p>
+                    </div>
+                </div>
+
+                <!-- Node 2023 -->
+                <div class="timeline-node left-node">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content-card">
+                        <div class="timeline-year-tag">2023</div>
+                        <h4 style="margin-bottom: 5px;">500+ Projects Deployed</h4>
+                        <p style="font-size: 0.85rem; color: var(--text);">Production solutions configured and distributed safely across active networks.</p>
+                    </div>
+                </div>
+
+                <!-- Node 2025 -->
+                <div class="timeline-node right-node">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-content-card">
+                        <div class="timeline-year-tag">2025</div>
+                        <h4 style="margin-bottom: 5px;">AI & Enterprise Solutions</h4>
+                        <p style="font-size: 0.85rem; color: var(--text);">Integrated custom machine learning pipelines and predictive databases cleanly.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [07] WHY CHOOSE US GRID
+         ========================================================================== -->
+    <section class="about-section">
+        <div class="container">
+            <div class="center-text">
+                <span class="section-subtitle">ADVANTAGE MATRIX</span>
+                <h2>Why Choose GrapesGenix</h2>
+            </div>
+            
+            <div class="grid-layout-4" style="margin-top: 40px; gap: 25px;">
+                <div class="info-card" style="padding: 25px;"><i class="fas fa-user-tie" style="color:var(--primary); font-size:1.5rem; margin-bottom:10px;"></i><h5>Industry Experts</h5></div>
+                <div class="info-card" style="padding: 25px;"><i class="fas fa-layer-group" style="color:var(--primary); font-size:1.5rem; margin-bottom:10px;"></i><h5>Production-Level Projects</h5></div>
+                <div class="info-card" style="padding: 25px;"><i class="fas fa-graduation-cap" style="color:var(--primary); font-size:1.5rem; margin-bottom:10px;"></i><h5>Internship Programs</h5></div>
+                <div class="info-card" style="padding: 25px;"><i class="fas fa-briefcase" style="color:var(--primary); font-size:1.5rem; margin-bottom:10px;"></i><h5>Placement Assistance</h5></div>
+                <div class="info-card" style="padding: 25px;"><i class="fas fa-laptop-code" style="color:var(--primary); font-size:1.5rem; margin-bottom:10px;"></i><h5>Modern Technologies</h5></div>
+                <div class="info-card" style="padding: 25px;"><i class="fas fa-chalkboard-teacher" style="color:var(--primary); font-size:1.5rem; margin-bottom:10px;"></i><h5>Corporate Mentorship</h5></div>
+                <div class="info-card" style="padding: 25px;"><i class="fas fa-award" style="color:var(--primary); font-size:1.5rem; margin-bottom:10px;"></i><h5>ISO Certified</h5></div>
+                <div class="info-card" style="padding: 25px;"><i class="fas fa-rocket" style="color:var(--primary); font-size:1.5rem; margin-bottom:10px;"></i><h5>Startup India Recognized</h5></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [08] CORE VALUES
+         ========================================================================== -->
+    <section class="about-section" style="background: var(--white);">
+        <div class="container">
+            <div class="center-text">
+                <span class="section-subtitle">OPERATIONAL DNA</span>
+                <h2>Our Core Values</h2>
+            </div>
+            
+            <div class="grid-layout-3" style="margin-top: 40px; gap: 20px;">
+                <div class="value-pill-box">Innovation</div>
+                <div class="value-pill-box">Integrity</div>
+                <div class="value-pill-box">Excellence</div>
+                <div class="value-pill-box">Teamwork</div>
+                <div class="value-pill-box">Quality</div>
+                <div class="value-pill-box">Continuous Learning</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [09] ACHIEVEMENTS & RECOGNITIONS
+         ========================================================================== -->
+    <section class="about-section">
+        <div class="container">
+            <div class="center-text">
+                <span class="section-subtitle">COMPLIANCE NODES</span>
+                <h2>Achievements & Recognitions</h2>
+            </div>
+            
+            <div class="badge-marquee-wrap">
+                <div class="achievement-badge-card"><i class="fas fa-certificate"></i> ISO 9001:2015</div>
+                <div class="achievement-badge-card"><i class="fas fa-star"></i> Startup India</div>
+                <div class="achievement-badge-card"><i class="fas fa-shield-alt"></i> MSME Registered</div>
+                <div class="achievement-badge-card"><i class="fas fa-building"></i> MCA Clearance</div>
+                <div class="achievement-badge-card"><i class="fas fa-stamp"></i> STED Council</div>
+                <div class="achievement-badge-card"><i class="fas fa-chart-line"></i> KSUM Track</div>
+                <div class="achievement-badge-card"><i class="fas fa-check"></i> CTECH Platform</div>
+                <div class="achievement-badge-card"><i class="fas fa-university"></i> BSS Validation</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [10] LEADERSHIP MESSAGE
+         ========================================================================== -->
+    <section class="about-section" style="background: var(--white);">
+        <div class="container">
+            <div class="feature-list-card" style="background: var(--bg-light); border-radius: 24px; padding: 50px; display: grid; grid-template-columns: 0.3fr 1.7fr; gap: 30px; align-items: center; box-shadow: var(--shadow-sm);">
+                <div style="text-align: center; font-size: 4rem; color: var(--primary);"><i class="fas fa-quote-left"></i></div>
+                <div>
+                    <span class="section-subtitle" style="letter-spacing: 1px;">DIRECTOR'S MESSAGE</span>
+                    <blockquote style="font-size: 1.15rem; color: var(--dark); font-weight: 500; line-height: 1.6; margin: 10px 0 20px 0; border: none; padding: 0;">
+                        "At GrapesGenix, we believe practical experience is the key to building successful technology professionals. Every student deserves full industry exposure before graduation."
+                    </blockquote>
+                    <h5 style="color: var(--primary); font-size: 1rem; font-weight: 700;">— Executive Managing Director Core</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [11] TECHNOLOGY EXPERTISE MATRIX
+         ========================================================================== -->
+    <section class="about-section">
+        <div class="container">
+            <div class="center-text">
+                <span class="section-subtitle">ENGINEERING ENVIRONMENT</span>
+                <h2>Technology Expertise Grid</h2>
+            </div>
+            
+            <div class="tech-stack-matrix">
+                <div class="tech-stack-item">Python</div>
+                <div class="tech-stack-item">Django</div>
+                <div class="tech-stack-item">Flutter</div>
+                <div class="tech-stack-item">React Engine</div>
+                <div class="tech-stack-item">Angular Core</div>
+                <div class="tech-stack-item">Node JS</div>
+                <div class="tech-stack-item">Java Cluster</div>
+                <div class="tech-stack-item">Spring Boot</div>
+                <div class="tech-stack-item">AWS Cloud</div>
+                <div class="tech-stack-item">Docker Dev</div>
+                <div class="tech-stack-item">MongoDB</div>
+                <div class="tech-stack-item">MySQL Hub</div>
+                <div class="tech-stack-item">Firebase API</div>
+                <div class="tech-stack-item">TensorFlow</div>
+                <div class="tech-stack-item">Gemini AI</div>
+                <div class="tech-stack-item">GitHub Repository</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [12] NUMERICAL STATISTICS LAYER
+         ========================================================================== -->
+    <section class="statistics-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-desc">Years Sector Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-desc">Students Trained</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-desc">Projects Delivered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-desc">Placement Support Vector</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-desc">Technology Domains</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-desc">Corporate Clients Array</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [13] CALL TO ACTION ASSEMBLY (Glass Framework)
+         ========================================================================== -->
+    <section class="about-section" style="background: var(--white);">
+        <div class="container">
+            <div class="large-image-container">
+                <div class="feature-list-card center-text" style="flex-direction: column; padding: 75px 40px; background: var(--bg-dark-gradient); border-radius: 28px; box-shadow: var(--shadow-lg);">
+                    <h2 style="color: var(--white); font-size: 2.3rem; margin-bottom: 15px; line-height: 1.2;">Ready to Build Your Technology Career?</h2>
+                    <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 35px auto; font-size: 0.95rem;">
+                        Join GrapesGenix and gain real-world experience through industry-led training arrays and live enterprise software projects instantly.
+                    </p>
+                    <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                        <a href="{% url 'courses' %}" class="btn btn-yellow">Explore Active Courses</a>
+                        <a href="{% url 'contact' %}" class="btn btn-blue">Secure Consultation Entry</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [14] GLOBAL FOOTER
+         ========================================================================== -->
+    <footer class="main-footer">
+        <div class="footer-bottom" style="border: none; padding-top: 0; margin-top: 0;">
+            <p>&copy; 2026 GrapesGenix Technical Solutions Pvt Ltd. All rights reserved.</p>
+            <div class="bottom-policy-links">
+                <a href="{% url 'home' %}">Return to Primary Node Base</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

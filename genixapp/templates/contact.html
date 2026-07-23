@@ -1,0 +1,831 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Technical Core & Academic Support | GrapesGenix</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Spartan:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Core -->
+     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    
+    <style>
+        /* ==========================================================================
+   HEADER NAVIGATION BAR
+   ========================================================================== */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:82px;
+    background:rgba(15,23,42,.95);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    z-index:9999;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav-container{
+    max-width:1320px;
+    width:100%;
+    margin:auto;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+/* ================= Logo ================= */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-shrink:0;
+}
+
+.logo-t{
+    width:46px;
+    height:46px;
+    border-radius:12px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(135deg,#7C3AED,#A855F7);
+    color:#fff;
+    font-size:20px;
+    font-weight:700;
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.2;
+}
+
+.logo-text strong{
+    color:#fff;
+    font-size:28px;
+    white-space:nowrap;
+}
+
+.logo-text span{
+    color:#bfc8d8;
+    font-size:13px;
+    white-space:nowrap;
+}
+
+/* ================= Menu ================= */
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:32px;
+}
+
+.nav-links a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    position:relative;
+    transition:.3s;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    background:#FFC107;
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:#FFC107;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after{
+    width:100%;
+}
+
+/* ================= Right Side ================= */
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.direct-mail{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.direct-mail:hover{
+    color:#FFC107;
+}
+        /* Contact-Specific Style Extension Core */
+        .contact-hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: var(--bg-dark-gradient, linear-gradient(135deg, #0f172a 0%, #1B3A87 100%));
+            padding: 160px 0 100px;
+            overflow: hidden;
+        }
+        .particle-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 0);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+        .contact-section {
+            padding: 80px 0;
+            background: var(--bg-light, #f8fafc);
+        }
+        .contact-section:nth-of-type(even) {
+            background: #ffffff;
+        }
+        
+        /* Layout Grids */
+        .split-form-map {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+            margin-top: 40px;
+        }
+        
+        /* Premium Info Cards Style */
+        .info-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 35px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(27, 58, 137, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(27, 58, 137, 0.12);
+            border-color: rgba(27, 58, 137, 0.1);
+        }
+        .info-card .icon-circle {
+            width: 70px;
+            height: 70px;
+            background: rgba(27, 58, 137, 0.06);
+            color: var(--primary, #1B3A87);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin: 0 auto 20px;
+            transition: 0.3s ease;
+        }
+        .info-card:hover .icon-circle {
+            background: var(--primary, #1B3A87);
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        /* Callout Box on Form Side */
+        .enquiry-trigger-card {
+            background: #ffffff;
+            padding: 45px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Map Container Wrap */
+        .map-wrapper-box {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            min-height: 450px;
+            height: 100%;
+        }
+        .map-wrapper-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        /* Value Propositions Layout */
+        .value-prop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .value-prop-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #1B3A87;
+            transition: 0.3s ease;
+        }
+        .value-prop-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-left-color: #FFC107;
+        }
+        .value-prop-card i {
+            font-size: 1.5rem;
+            color: #1B3A87;
+            margin-top: 3px;
+        }
+
+        /* FAQ System */
+        .faq-accordion-container {
+            max-width: 850px;
+            margin: 40px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .accordion-item {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .accordion-trigger-input { display: none; }
+        .accordion-header-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 28px;
+            font-weight: 600;
+            color: #0f172a;
+            cursor: pointer;
+            user-select: none;
+            transition: 0.3s ease;
+        }
+        .accordion-header-label::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            font-size: 0.85rem;
+            color: #475569;
+            transition: transform 0.3s ease;
+        }
+        .accordion-content-box {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #fafbfc;
+        }
+        .accordion-content-box p {
+            padding: 25px 28px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0;
+            color: #475569;
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+        .accordion-trigger-input:checked ~ .accordion-header-label {
+            color: #1B3A87;
+            background: rgba(27, 58, 137, 0.02);
+        }
+        .accordion-trigger-input:checked ~ .accordion-header-label::after {
+            transform: rotate(180deg);
+            color: #1B3A87;
+        }
+        .accordion-trigger-input:checked ~ .accordion-content-box {
+            max-height: 200px;
+        }
+
+        /* Modal Popup System */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            position: relative;
+            animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f1f5f9;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            color: #64748b;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s ease;
+        }
+        .modal-close-btn:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        /* Form Inputs */
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+        }
+        .form-control-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: #0f172a;
+            background: #fbfcfd;
+            transition: 0.3s ease;
+        }
+        .form-control-input:focus {
+            outline: none;
+            border-color: #1B3A87;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(27, 58, 137, 0.1);
+        }
+
+        /* Alert Notification Styles */
+        .alert-container {
+            max-width: 1200px;
+            margin: 20px auto 0;
+            padding: 0 20px;
+        }
+        .alert {
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .alert-success { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; }
+        .alert-error { background-color: #f8d7da; color: #842029; border: 1px solid #f5c2c7; }
+
+        @media (max-width: 991px) {
+            .split-form-map { grid-template-columns: 1fr; }
+            .form-grid-2 { grid-template-columns: 1fr; }
+            .office-info-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 576px) {
+            .office-info-grid { grid-template-columns: 1fr !important; }
+        }
+
+        .back-btn {
+            background-color: #1B3A87;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: absolute;
+            top: 90px;
+            left: 20px;
+            z-index: 100;
+        }
+        .back-btn:hover { background-color: #09132e; }
+    </style>
+</head>
+<body style="background: var(--bg-light, #f8fafc);">
+
+    <button class="back-btn" onclick="history.back()">
+        ← Back
+    </button>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='{% url 'home' %}'">
+            <div class="logo-t">G</div>
+            <div class="logo-text"><strong>GrapesGenix</strong><span>Technical Engine</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'courses' %}">Courses</a>
+            <a href="{% url 'internship' %}">Internship</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'projects' %}">Projects</a>
+        </div>
+        <div class="nav-actions">
+            <a href="mailto:mail@grapestechs.com" class="btn btn-blue" style="text-decoration:none;">Direct Mail Link</a>
+            <i class="fas fa-bars menu-icon-btn"></i>
+        </div>
+    </nav>
+
+    <!-- Django Messages Framework Alerts -->
+    {% if messages %}
+    <div class="alert-container" style="padding-top: 100px;">
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}error{% else %}success{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Hero Banner -->
+    <section class="contact-hero">
+        <div class="particle-overlay"></div>
+        <div class="container" style="grid-template-columns: 1fr; text-align: center;">
+            <div class="glass-hero-card" style="max-width: 860px; margin: 0 auto;">
+                <span class="section-subtitle" style="color: #FFC107; letter-spacing: 2px;">GET IN TOUCH</span>
+                <h1 style="color: #ffffff; font-size: 46px; margin: 15px 0 20px; line-height: 1.2;">Let's Build Your Future Together</h1>
+                <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 35px;">
+                    Contact GrapesGenix Technical Solutions Pvt Ltd for inquiries, collaborations, or project discussions.
+                </p>
+                <div class="hero-buttons" style="display: flex; gap: 15px; justify-content: center; margin-bottom: 0;">
+                    <button onclick="openEnquiryModal('Contact')" class="btn btn-yellow" style="background:#FFC107; color:#0f172a; padding: 12px 24px; border-radius:8px; border:none; font-weight:600; cursor:pointer;">
+                        <i class="fas fa-paper-plane"></i> Submit Enquiry
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="wave-bottom" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; background: #f8fafc; clip-path: ellipse(60% 100% at 50% 100%);"></div>
+    </section>
+
+    <!-- Contact Information Cards -->
+    <section class="contact-section" style="padding-bottom: 40px;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="grid-layout-4" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+                
+                <div class="info-card">
+                    <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+                    <h4 style="margin-bottom: 10px; font-size: 1.1rem; color:#0f172a;">Our Address</h4>
+                    <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">
+                        <strong>GrapesGenix Technical Solutions</strong><br>
+                        Gate No 71, Parakott Lane,<br>
+                        Patturaikkal, Thrissur - 680020
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-circle"><i class="fas fa-phone-alt"></i></div>
+                    <h4 style="margin-bottom: 10px; font-size: 1.1rem; color:#0f172a;">Call Us</h4>
+                    <p style="font-size: 0.88rem; color: #1B3A87; font-weight: 600; line-height: 1.6;">
+                        <a href="tel:+919744112113" style="color: inherit; text-decoration: none;">09744112113</a><br>
+                        <a href="tel:+917736563694" style="color: inherit; text-decoration: none;">07736563694</a><br>
+                        <a href="tel:+919020209949" style="color: inherit; text-decoration: none;">09020209949</a><br>
+                        <a href="tel:+917558049107" style="color: inherit; text-decoration: none;">07558049107</a>
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                    <h4 style="margin-bottom: 10px; font-size: 1.1rem; color:#0f172a;">Email Us</h4>
+                    <p style="font-size: 0.9rem; color: #1B3A87; font-weight: 600; line-height: 1.6; word-break: break-all;">
+                        <a href="mailto:mail@grapestechs.com" style="color: inherit; text-decoration: none;">mail@grapestechs.com</a><br>
+                        <a href="mailto:info@grapestechs.com" style="color: inherit; text-decoration: none;">info@grapestechs.com</a>
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-circle"><i class="fas fa-clock"></i></div>
+                    <h4 style="margin-bottom: 10px; font-size: 1.1rem; color:#0f172a;">Landline Support</h4>
+                    <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">
+                        <a href="tel:04872338800" style="color: #1B3A87; text-decoration: none; font-weight: 600;">0487-2338800</a><br>
+                        <span style="font-size: 0.82rem; display: block; margin-top: 4px;">(10:00 AM – 5:00 PM)</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Trigger Section -->
+    <section class="contact-section" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="split-form-map">
+                <!-- Trigger Box -->
+                <div class="enquiry-trigger-card">
+                    <div style="width: 80px; height: 80px; background: rgba(27, 58, 137, 0.08); color: #1B3A87; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 20px;">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3 style="font-size: 1.8rem; color: #0f172a; margin-bottom: 10px;">Have Questions?</h3>
+                    <p style="color: #64748b; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.6;">
+                        Submit your general or academic requirements directly to our engineering desks using our fast enquiry channel.
+                    </p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                        <button onclick="openEnquiryModal('Contact')" class="btn btn-blue" style="padding: 14px 28px; background:#1B3A87; color:#fff; border:none; border-radius:12px; font-weight:600; cursor:pointer;">
+                            Open Enquiry Modal
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Google Maps Frame -->
+                <div class="map-wrapper-box">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6125.66653884388!2d76.20971470296013!3d10.537507917386288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ee5824f19e7b%3A0xadd58d0710653780!2sGRAPESGENIX%20TECHNICAL%20SOLUTIONS%20PRIVATE%20LIMITED%20%7C%20Software%20Training%20%26%20Internship%20Institute%20Thrissur%20%7C%20Live%20Project%20Center!5e0!3m2!1sen!2sin!4v1782456904690!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popup Form Modal -->
+    <div class="modal-overlay" id="enquiryModal">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeEnquiryModal()">&times;</button>
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h3 id="modalTitle" style="font-size: 1.6rem; color: #0f172a; margin-bottom: 5px;">Submit Enquiry</h3>
+                <p style="font-size: 0.85rem; color: #64748b;">Fill in your details and our core team will get back to you.</p>
+            </div>
+
+            <form action="{% url 'submit_general_enquiry' %}" method="POST">
+                {% csrf_token %}
+                
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Full Name</label>
+                        <input type="text" name="name" class="form-control-input" placeholder="e.g. John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Email Address</label>
+                        <input type="email" name="email" class="form-control-input" placeholder="name@domain.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Phone Number</label>
+                        <input type="tel" name="phone" class="form-control-input" placeholder="+91 XXXXX XXXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Category Track</label>
+                        <select name="category" id="categorySelect" class="form-control-input" style="height: 45px;" required>
+                            <!-- Options injected dynamically by JS -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Subject Heading</label>
+                    <input type="text" name="subject" class="form-control-input" placeholder="Summary of request" required>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Elaborate Your Requirements</label>
+                    <textarea name="message" class="form-control-input" rows="4" placeholder="Provide system details or query parameters..." style="resize: none;" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-blue" style="width: 100%; padding: 14px; background:#1B3A87; color:#fff; border:none; border-radius:12px; font-weight:600; cursor:pointer;">
+                    Transmit Parameters <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Office Details Section -->
+    <section class="contact-section" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="feature-list-card" style="background: #ffffff; padding: 50px; border-radius: 24px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); display: block;">
+                <div class="form-grid-2 office-info-grid" style="grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: left;">
+                    <div>
+                        <h5 style="color: #1B3A87; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight:700;">HQ Operations Base</h5>
+                        <p style="font-size: 0.9rem; line-height: 1.6; color: #475569;">GrapesGenix Technical Solutions<br>Patturaikkal, Thrissur<br>Kerala, India</p>
+                    </div>
+                    <div>
+                        <h5 style="color: #1B3A87; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight:700;">Voice Desks</h5>
+                        <p style="font-size: 0.88rem; color: #0f172a; font-weight: 500; line-height: 1.5;">
+                            Mob: 09744112113<br>
+                            Mob: 07736563694<br>
+                            LL: 0487-2338800
+                        </p>
+                    </div>
+                    <div>
+                        <h5 style="color: #1B3A87; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight:700;">Digital Core</h5>
+                        <p style="font-size: 0.88rem; color: #0f172a; font-weight: 500; line-height: 1.5;">
+                            mail@grapestechs.com<br>
+                            info@grapestechs.com
+                        </p>
+                    </div>
+                    <div>
+                        <h5 style="color: #1B3A87; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight:700;">Primary Domain</h5>
+                        <a href="https://www.grapesgenix.com" style="font-size: 0.9rem; color: #09132e; font-weight: 600; text-decoration: none;">www.grapesgenix.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capability Matrix -->
+    <section class="contact-section" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="center-text" style="text-align: center;">
+                <span class="section-subtitle" style="color: #1B3A87; font-weight: 700;">CAPABILITIES MATRICES</span>
+                <h2 style="font-size: 2.2rem; color: #0f172a;">Why Interface With GrapesGenix?</h2>
+            </div>
+            
+            <div class="value-prop-grid">
+                <div class="value-prop-card"><i class="fas fa-laptop-code"></i><div><h5 style="margin-bottom: 5px; color:#0f172a;">Enterprise Systems</h5><p style="font-size: 0.82rem; color:#475569;">Custom software architecture frameworks configured cleanly.</p></div></div>
+                <div class="value-prop-card"><i class="fas fa-mobile-alt"></i><div><h5 style="margin-bottom: 5px; color:#0f172a;">Mobile Applications</h5><p style="font-size: 0.82rem; color:#475569;">Native platforms deployed directly to production marketplaces.</p></div></div>
+                <div class="value-prop-card"><i class="fas fa-graduation-cap"></i><div><h5 style="margin-bottom: 5px; color:#0f172a;">Industry Internship</h5><p style="font-size: 0.82rem; color:#475569;">Real workspace validation tracking operational pipelines.</p></div></div>
+                <div class="value-prop-card"><i class="fas fa-briefcase"></i><div><h5 style="margin-bottom: 5px; color:#0f172a;">Placement Support</h5><p style="font-size: 0.82rem; color:#475569;">Direct routing arrays linked into corporate recruitment nets.</p></div></div>
+                <div class="value-prop-card"><i class="fas fa-users"></i><div><h5 style="margin-bottom: 5px; color:#0f172a;">Corporate Training</h5><p style="font-size: 0.82rem; color:#475569;">Upskilling working vectors cleanly to modern metrics.</p></div></div>
+                <div class="value-prop-card"><i class="fas fa-rocket"></i><div><h5 style="margin-bottom: 5px; color:#0f172a;">Startup Tech Support</h5><p style="font-size: 0.82rem; color:#475569;">Accelerating minimal functional prototypes to market scales.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="contact-section" style="padding-top: 40px;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="center-text" style="text-align: center;">
+                <span class="section-subtitle" style="color: #1B3A87; font-weight: 700;">RESOLVED NODES</span>
+                <h2 style="font-size: 2.2rem; color: #0f172a;">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-accordion-container">
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq-1" class="accordion-trigger-input">
+                    <label for="faq-1" class="accordion-header-label">Do you provide internships?</label>
+                    <div class="accordion-content-box">
+                        <p>Yes, GrapesGenix provides comprehensive corporate internships covering production-grade codebases, deployment tracks, and live architecture validations under designated engineering supervisors.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq-2" class="accordion-trigger-input">
+                    <label for="faq-2" class="accordion-header-label">Can beginners join your technical programs?</label>
+                    <div class="accordion-content-box">
+                        <p>Absolutely. Our training curriculum contains progressive baseline levels mapped carefully to transform structural design principles from initial stages right up to elite workspace deployments cleanly.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq-3" class="accordion-trigger-input">
+                    <label for="faq-3" class="accordion-header-label">Do you provide verified corporate certifications?</label>
+                    <div class="accordion-content-box">
+                        <p>Yes, all internship clearances and advanced structural certifications carry full company authorization stamps, unique verification tags, and project description matrix inclusions.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq-4" class="accordion-trigger-input">
+                    <label for="faq-4" class="accordion-header-label">Is dedicated placement support available for engineers?</label>
+                    <div class="accordion-content-box">
+                        <p>Yes, we operate an integrated Placement Cell that coordinates mock interviews, portfolio optimization pipelines, and direct profile distribution to our domestic and enterprise partners.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq-5" class="accordion-trigger-input">
+                    <label for="faq-5" class="accordion-header-label">Do you build custom software architectures for external companies?</label>
+                    <div class="accordion-content-box">
+                        <p>Yes, as an active IT software company, we architect production web apps, native app systems, cloud microservices, and specialized analytics databases under strict corporate contracts.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq-6" class="accordion-trigger-input">
+                    <label for="faq-6" class="accordion-header-label">Can I schedule a one-on-one technology architectural consultation?</label>
+                    <div class="accordion-content-box">
+                        <p>Yes. You can lock in a diagnostic session by using the form above or by picking one of our primary engagement call links directly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dual Call To Action -->
+    <section class="contact-section" style="background: #ffffff;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="large-image-container">
+                <div class="feature-list-card center-text" style="flex-direction: column; padding: 70px 40px; background: linear-gradient(135deg, #0f172a 0%, #1B3A87 100%); border-radius: 28px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); text-align:center;">
+                    <h2 style="color: #ffffff; font-size: 2.2rem; margin-bottom: 12px;">Ready to Launch Your Intentions?</h2>
+                    <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 35px auto;">
+                        Lock in structural tech consultations or register profiles cleanly inside the training clusters right away.
+                    </p>
+                    
+                    <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 35px; color: #ffffff; font-weight: 500; font-size: 0.9rem;">
+                        <span><i class="fas fa-check" style="color:#FFC107;"></i> Free Diagnostic Session</span>
+                        <span><i class="fas fa-check" style="color:#FFC107;"></i> Expert Consultants</span>
+                        <span><i class="fas fa-check" style="color:#FFC107;"></i> Live Production Pipelines</span>
+                    </div>
+
+                    <div class="hero-buttons" style="display: flex; gap: 15px; justify-content: center; margin-bottom: 0;">
+                        <button onclick="openEnquiryModal('Projects')" class="btn btn-blue" style="background:#1B3A87; color:#fff; padding: 12px 24px; border-radius:8px; border:none; font-weight:600; cursor:pointer;">💼 Start Corporate Project</button>
+                        <button onclick="openEnquiryModal('Internship')" class="btn btn-yellow" style="background:#FFC107; color:#0f172a; padding: 12px 24px; border-radius:8px; border:none; font-weight:600; cursor:pointer;">🎓 Join Internship Array</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Assembly -->
+    <footer class="main-footer" style="background-color: #09132e; padding: 40px 0 30px; color: rgba(255,255,255,0.75); text-align: center;">
+        <div class="footer-bottom" style="border: none; padding-top: 0; margin-top: 0;">
+            <p>&copy; 2026 GrapesGenix Technical Solutions Pvt Ltd. All rights reserved.</p>
+            <div class="bottom-policy-links" style="margin-top: 15px; display: flex; justify-content: center; gap: 15px; font-size: 1.3rem;">
+                <a href="#" style="color:inherit;"><i class="fab fa-facebook"></i></a>
+                <a href="#" style="color:inherit;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color:inherit;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color:inherit;"><i class="fab fa-github"></i></a>
+                <a href="#" style="color:inherit;"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Modal Control Logic -->
+    <script>
+        const categories = ['Services', 'Projects', 'Contact', 'Courses', 'Internship', 'FAQ'];
+
+        function openEnquiryModal(defaultCategory = 'Contact') {
+            const modal = document.getElementById('enquiryModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const categorySelect = document.getElementById('categorySelect');
+
+            modalTitle.innerText = `Submit Enquiry`;
+
+            // Populate category options
+            categorySelect.innerHTML = '';
+            
+            categories.forEach(cat => {
+                const opt = document.createElement('option');
+                opt.value = cat;
+                opt.innerText = cat;
+                if (cat === defaultCategory) {
+                    opt.selected = true;
+                }
+                categorySelect.appendChild(opt);
+            });
+
+            modal.classList.add('active');
+        }
+
+        function closeEnquiryModal() {
+            document.getElementById('enquiryModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside card
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('enquiryModal');
+            if (e.target === modal) {
+                closeEnquiryModal();
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<div class="modal fade" id="generalEnquiryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="generalModalTitle">Submit Enquiry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="{% url 'submit_general_enquiry' %}" method="POST">
+        {% csrf_token %}
+        <div class="modal-body">
+          <!-- Hidden Enquiry Type Field -->
+          <input type="hidden" name="enquiry_type" id="generalEnquiryType" value="Contact">
+
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" name="name" class="form-control" required placeholder="John Doe">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <input type="email" name="email" class="form-control" required placeholder="john@example.com">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="text" name="phone" class="form-control" required placeholder="+91 9876543210">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Subject</label>
+            <input type="text" name="subject" class="form-control" placeholder="Brief subject">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea name="message" class="form-control" rows="4" required placeholder="How can we help you?"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary w-100">Send Enquiry</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

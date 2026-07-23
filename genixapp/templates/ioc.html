@@ -1,0 +1,1328 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry on Campus | GrapesGenix Technical Solutions</title>
+    
+    <!-- External Dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Spartan:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Embedded Styles -->
+    <style>
+        /* ==========================================================================
+           GLOBAL BASE & RESET
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ==========================================================================
+           NAVBAR
+           ========================================================================== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 5%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .logo-t {
+            background: #1B3A87;
+            color: #F4C21D;
+            font-family: 'Spartan', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .logo-text strong {
+            display: block;
+            color: #1B3A87;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            color: #64748b;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: #334155;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a.active, .nav-links a:hover {
+            color: #1B3A87;
+            font-weight: 700;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-icon-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #1B3A87;
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           BUTTONS & BADGES
+           ========================================================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 26px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-blue {
+            background: #1B3A87;
+            color: #fff;
+        }
+
+        .btn-blue:hover {
+            background: #122861;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(27, 38, 135, 0.25);
+        }
+
+        .btn-yellow {
+            background: #F4C21D;
+            color: #111;
+        }
+
+        .btn-yellow:hover {
+            background: #e0b012;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(244, 194, 29, 0.3);
+        }
+
+        .check-badge {
+            background: rgba(27, 58, 135, 0.08);
+            color: #1B3A87;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero-section {
+            position: relative;
+            padding: 100px 5% 80px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #fff;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(27, 58, 135, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .glass-hero-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px 40px;
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .split-heading {
+            font-family: 'Spartan', sans-serif;
+            font-size: 2.5rem;
+            line-height: 1.3;
+            margin: 20px 0;
+            color: #fff;
+        }
+
+        .split-heading .highlight-text {
+            color: #F4C21D;
+        }
+
+        .glass-hero-card p {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ==========================================================================
+           ABOUT SECTION
+           ========================================================================== */
+        .about-section {
+            padding: 100px 5%;
+            background: #fff;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-left-graphics {
+            position: relative;
+        }
+
+        .about-portrait-img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            object-fit: cover;
+        }
+
+        .floating-instructor-card {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .floating-instructor-card h5 {
+            font-size: 1rem;
+            color: #111;
+        }
+
+        .floating-instructor-card p {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #1B3A87;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .about-info-card h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .about-info-card p {
+            color: #475569;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .ioc-benefits-compact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .ioc-benefit-tag {
+            background: #f0f4ff;
+            color: #1B3A87;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(27, 58, 135, 0.1);
+        }
+
+        .ioc-benefit-tag i {
+            color: #F4C21D;
+        }
+
+        /* ==========================================================================
+           WHY CHOOSE SECTION
+           ========================================================================== */
+        .why-choose-section {
+            padding: 100px 5%;
+            background: #f8fafc;
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        .why-choose-header h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 50px;
+        }
+
+        .ioc-reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ioc-reason-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 35px 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ioc-reason-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+        }
+
+        .ioc-card-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(27, 58, 135, 0.08);
+            color: #1B3A87;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .ioc-reason-card h3 {
+            font-size: 1.2rem;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .ioc-reason-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           COLLABORATING INSTITUTIONS
+           ========================================================================== */
+        .partners-section {
+            padding: 100px 5%;
+            background: #0f172a;
+            color: #fff;
+        }
+
+        .white-text {
+            color: #fff !important;
+        }
+
+        .partners-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+        }
+
+        .colleges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .college-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .college-card:hover {
+            border-color: rgba(244, 194, 29, 0.5);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .college-icon {
+            font-size: 2.2rem;
+            color: #F4C21D;
+            margin-bottom: 18px;
+        }
+
+        .college-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .college-loc {
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .college-dist {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* ==========================================================================
+           WORKFLOW PROCESS
+           ========================================================================== */
+        .workflow-section {
+            padding: 100px 5%;
+            background: #fff;
+        }
+
+        .workflow-section h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 50px;
+        }
+
+        .workflow-timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .workflow-step {
+            background: #f8fafc;
+            padding: 16px 20px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            min-width: 130px;
+            flex: 1;
+        }
+
+        .workflow-step span {
+            display: block;
+            font-weight: 900;
+            color: #1B3A87;
+            font-size: 1.2rem;
+        }
+
+        .workflow-step p {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
+            margin-top: 4px;
+        }
+
+        .highlight-step {
+            background: #1B3A87;
+            border-color: #1B3A87;
+        }
+
+        .highlight-step span {
+            color: #F4C21D;
+        }
+
+        .highlight-step p {
+            color: #fff;
+        }
+
+        .workflow-arrow {
+            color: #F4C21D;
+            font-size: 1.1rem;
+        }
+
+        /* ==========================================================================
+           TECH STACK
+           ========================================================================== */
+        .tech-stack-section {
+            padding: 80px 5%;
+            background: #f8fafc;
+            text-align: center;
+        }
+
+        .tech-stack-section h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 40px;
+        }
+
+        .tech-pills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .tech-pill {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1B3A87;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================================================
+           TESTIMONIALS (SWIPER)
+           ========================================================================== */
+        .testimonial-section {
+            padding: 100px 5%;
+            background: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-section h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+        }
+
+        .testimonial-section .subtitle {
+            color: #64748b;
+            margin-bottom: 40px;
+        }
+
+        .swiper-slide.card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 35px;
+            box-sizing: border-box;
+        }
+
+        .swiper-slide .quote {
+            font-size: 2.5rem;
+            color: #1B3A87;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .swiper-slide p {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .swiper-slide .stars {
+            color: #F4C21D;
+            margin-bottom: 10px;
+        }
+
+        .swiper-slide h3 {
+            font-size: 1.1rem;
+            color: #0f172a;
+        }
+
+        .swiper-slide span {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* ==========================================================================
+           FAQ ACCORDION
+           ========================================================================== */
+        .faq-section {
+            padding: 100px 5%;
+            background: #f8fafc;
+        }
+
+        .faq-section h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 40px;
+        }
+
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            padding: 10px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 22px 0;
+            background: none;
+            border: none;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0f172a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: #1B3A87;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 22px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* ==========================================================================
+           INSTITUTIONAL COLLABORATION CTA
+           ========================================================================== */
+        .institutional-collaboration-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #1B3A87 0%, #0f172a 100%);
+            color: #fff;
+            text-align: center;
+        }
+
+        .collaboration-card-banner {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .collaboration-card-banner h2 {
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+        }
+
+        .collaboration-card-banner p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+            margin-bottom: 35px;
+        }
+
+        /* ==========================================================================
+           MODAL OVERLAY & FORM STYLING
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.65);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-overlay.active { 
+            display: flex; 
+        }
+
+        .modal-card {
+            background: #fff;
+            padding: 35px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 520px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #64748b;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            color: #0f172a;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: #1B3A87;
+        }
+
+        /* Alert Messages */
+        .alert-banner {
+            max-width: 900px;
+            margin: 20px auto 0;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .alert-banner.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-banner.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        .main-footer {
+            background: #090d16;
+            color: #64748b;
+            padding: 30px 5%;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ==========================================================================
+           RESPONSIVE MEDIA QUERIES
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+            .menu-icon-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .split-heading {
+                font-size: 1.8rem;
+            }
+            .workflow-timeline {
+                flex-direction: column;
+            }
+            .workflow-arrow {
+                transform: rotate(90deg);
+            }
+            .floating-instructor-card {
+                right: 10px;
+                bottom: -10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo" onclick="window.location.href='{% url 'home' %}'">
+            <div class="logo-t">G</div>
+            <div class="logo-text">
+                <strong>GrapesGenix</strong>
+                <span>Technical Solutions Pvt Ltd</span>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'internship' %}">Internship</a>
+            <a href="{% url 'ioc' %}" class="active">Industry on Campus</a>
+            <a href="{% url 'projects' %}">Projects</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="btn btn-blue nav-btn modal-trigger-btn">
+                <i class="fa-solid fa-graduation-cap"></i> Apply Now
+            </button>
+            <button class="menu-icon-btn"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Flash Messages Support -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert-banner {% if message.tags %}{{ message.tags }}{% endif %}">
+                <i class="fas {% if message.tags == 'success' %}fa-check-circle{% else %}fa-exclamation-circle{% endif %}"></i> {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-container">
+            <div class="glass-hero-card">
+                <div class="badge-row">
+                    <span class="check-badge">
+                        <i class="fa-solid fa-graduation-cap"></i> GRAPESGENIX INITIATIVE
+                    </span>
+                </div>
+                
+                <h1 class="split-heading">
+                    <span class="highlight-text">
+                        Industry on Campus
+                        
+                            <path d="M5 18 C30 5 60 22 95 12 C125 4 150 16 175 8" stroke="#F4C21D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span><br>
+                    Building Future Engineers Through Real Industry Experience
+                </h1>
+
+                <p>
+                    <strong>Industry on Campus</strong> is a flagship initiative by GrapesGenix Technical Solutions Pvt. Ltd. that bridges the gap between academic education and industrial practice. Students gain practical exposure by working on live software development projects under the mentorship of experienced professionals while continuing their academic studies.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#about-ioc" class="btn btn-blue">
+                        Explore the Initiative <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                    <a href="#colleges" class="btn btn-yellow">Institutional Partners</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about-ioc">
+        <div class="about-grid">
+            <div class="about-left-graphics">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600" alt="Students in Lab" class="about-portrait-img">
+                <div class="floating-instructor-card">
+                    <i class="fa-solid fa-laptop-code fa-2x" style="color:#1B3A87;"></i>
+                    <div>
+                        <h5>Real Development</h5>
+                        <p>Campus Engineering Hubs</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-info-card">
+                <p class="section-subtitle">ABOUT THE INITIATIVE</p>
+                <h2>
+                    What is <span class="highlight-text">Industry on Campus?
+                       
+                            <path d="M5 18 C30 5 60 22 95 12 C125 4 150 16 175 8" stroke="#F4C21D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </h2>
+
+                <p><strong>Industry on Campus</strong> is an innovative academic–industry collaboration designed to provide students with practical software engineering experience before graduation. The initiative enables colleges to establish an industry environment within the campus where students actively participate in live projects, enterprise software development, mobile application development, web engineering, and emerging technologies.</p>
+                
+                <p>Through continuous mentorship from experienced software engineers, students develop technical expertise, teamwork, communication skills, and professional work ethics, making them industry-ready by the time they complete their academic programs.</p>
+
+                <div class="ioc-benefits-compact-grid">
+                    <div class="ioc-benefit-tag"><i class="fa-solid fa-circle-check"></i> Live Software Experience</div>
+                    <div class="ioc-benefit-tag"><i class="fa-solid fa-circle-check"></i> Student Stipends</div>
+                    <div class="ioc-benefit-tag"><i class="fa-solid fa-circle-check"></i> Industry Mentorship</div>
+                    <div class="ioc-benefit-tag"><i class="fa-solid fa-circle-check"></i> Enterprise Exposure</div>
+                    <div class="ioc-benefit-tag"><i class="fa-solid fa-circle-check"></i> Placement Readiness</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE SECTION -->
+    <section class="why-choose-section">
+        <div class="why-choose-header">
+            <p class="section-subtitle center-text">CORE VALUE</p>
+            <h2 class="center-text">Why Choose <span class="highlight-text">Industry on Campus?
+                
+                    <path d="M5 18 C30 5 60 22 95 12 C125 4 150 16 175 8" stroke="#F4C21D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span></h2>
+        </div>
+
+        <div class="ioc-reasons-grid">
+            <div class="ioc-reason-card">
+                <div class="ioc-card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                <h3>Live Industry Projects</h3>
+                <p>Students contribute directly to production software projects utilized by real clients.</p>
+            </div>
+
+            <div class="ioc-reason-card">
+                <div class="ioc-card-icon"><i class="fa-solid fa-user-tie"></i></div>
+                <h3>Experienced Technical Mentors</h3>
+                <p>Learn best practices directly from active software developers and experienced project leads.</p>
+            </div>
+
+            <div class="ioc-reason-card">
+                <div class="ioc-card-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>Practical Software Development</h3>
+                <p>Gain production-level experience that goes far beyond traditional classroom learning.</p>
+            </div>
+
+            <div class="ioc-reason-card">
+                <div class="ioc-card-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <h3>Career Readiness</h3>
+                <p>Build strong, verified technical portfolios and significantly improve employability.</p>
+            </div>
+
+            <div class="ioc-reason-card">
+                <div class="ioc-card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <h3>Innovation & Research</h3>
+                <p>Encourage creative problem solving through modern, technology-driven solutions.</p>
+            </div>
+
+            <div class="ioc-reason-card">
+                <div class="ioc-card-icon"><i class="fa-solid fa-people-group"></i></div>
+                <h3>Professional Development</h3>
+                <p>Develop core corporate communication, teamwork, leadership, and project management skills.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLABORATING INSTITUTIONS -->
+    <section class="partners-section" id="colleges">
+        <p class="section-subtitle center-text white-text">ACADEMIC NETWORK</p>
+        <h2 class="center-text white-text">Academic Institutions Collaborating with <span class="highlight-text">Industry on Campus
+           
+                <path d="M5 18 C30 5 60 22 95 12 C125 4 150 16 175 8" stroke="#F4C21D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </span></h2>
+
+        <div class="colleges-grid">
+            <div class="college-card">
+                <div class="college-icon"><i class="fa-solid fa-building-columns"></i></div>
+                <h3>Model Polytechnic College</h3>
+                <p class="college-loc"><i class="fa-solid fa-location-dot"></i> Kalletumkara</p>
+                <span class="college-dist">Thrissur District, Kerala</span>
+            </div>
+
+            <div class="college-card">
+                <div class="college-icon"><i class="fa-solid fa-building-columns"></i></div>
+                <h3>Model Polytechnic College</h3>
+                <p class="college-loc"><i class="fa-solid fa-location-dot"></i> Karunagappally</p>
+                <span class="college-dist">Kollam District, Kerala</span>
+            </div>
+
+            <div class="college-card">
+                <div class="college-icon"><i class="fa-solid fa-building-columns"></i></div>
+                <h3>Women's Polytechnic College</h3>
+                <p class="college-loc"><i class="fa-solid fa-location-dot"></i> Nedupuzha</p>
+                <span class="college-dist">Thrissur District, Kerala</span>
+            </div>
+
+            <div class="college-card">
+                <div class="college-icon"><i class="fa-solid fa-building-columns"></i></div>
+                <h3>Presentation College of Arts & Science</h3>
+                <p class="college-loc"><i class="fa-solid fa-location-dot"></i> Puthenvelikkara</p>
+                <span class="college-dist">Ernakulam District, Kerala</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKFLOW PROCESS -->
+    <section class="workflow-section">
+        <p class="section-subtitle center-text">METHODOLOGY</p>
+        <h2 class="center-text">How <span class="highlight-text">Industry on Campus
+            
+                <path d="M5 18 C30 5 60 22 95 12 C125 4 150 16 175 8" stroke="#F4C21D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </span> Works</h2>
+
+        <div class="workflow-timeline">
+            <div class="workflow-step"><span>01</span><p>College Collaboration</p></div>
+            <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="workflow-step"><span>02</span><p>Student Selection</p></div>
+            <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="workflow-step"><span>03</span><p>Technical Training</p></div>
+            <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="workflow-step"><span>04</span><p>Team Formation</p></div>
+            <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="workflow-step"><span>05</span><p>Live Industry Projects</p></div>
+            <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="workflow-step"><span>06</span><p>Mentorship & Reviews</p></div>
+            <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="workflow-step"><span>07</span><p>Project Delivery</p></div>
+            <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="workflow-step highlight-step"><span>08</span><p>Industry-Ready Graduates</p></div>
+        </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section class="tech-stack-section">
+        <p class="section-subtitle center-text">DOMAINS & TOOLS</p>
+        <h2 class="center-text">Technologies Students Work With</h2>
+        
+        <div class="tech-pills-wrapper">
+            <span class="tech-pill"><i class="fa-brands fa-python"></i> Python</span>
+            <span class="tech-pill"><i class="fa-solid fa-code"></i> Django</span>
+            <span class="tech-pill"><i class="fa-mobile-screen"></i> Flutter</span>
+            <span class="tech-pill"><i class="fa-brands fa-react"></i> React</span>
+            <span class="tech-pill"><i class="fa-brands fa-java"></i> Java</span>
+            <span class="tech-pill"><i class="fa-brands fa-php"></i> PHP</span>
+            <span class="tech-pill"><i class="fa-solid fa-database"></i> MySQL</span>
+            <span class="tech-pill"><i class="fa-solid fa-server"></i> MongoDB</span>
+            <span class="tech-pill"><i class="fa-solid fa-brain"></i> Artificial Intelligence</span>
+            <span class="tech-pill"><i class="fa-solid fa-robot"></i> Machine Learning</span>
+            <span class="tech-pill"><i class="fa-solid fa-network-wired"></i> Internet of Things (IoT)</span>
+            <span class="tech-pill"><i class="fa-solid fa-microchip"></i> Embedded Systems</span>
+        </div>
+    </section>
+
+    <!-- STUDENT EXPERIENCES (SWIPER) -->
+    <section class="testimonial-section">
+        <p class="section-subtitle">STUDENT EXPERIENCES</p>
+        <h2>Feedback From Participants</h2>
+        <p class="subtitle">Real stories from students enrolled in Industry on Campus</p>
+
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide card">
+                    <div class="quote">❝</div>
+                    <p>Industry on Campus completely changed my understanding of software development. Working on live projects with experienced mentors helped me build confidence and practical technical skills before graduation.</p>
+                    <div class="stars">★★★★★</div>
+                    <h3>Arjun S.</h3>
+                    <span>Student Participant</span>
+                </div>
+                <div class="swiper-slide card">
+                    <div class="quote">❝</div>
+                    <p>The opportunity to work on enterprise-level projects while studying was an incredible learning experience. It prepared me for technical interviews and professional work culture.</p>
+                    <div class="stars">★★★★★</div>
+                    <h3>Megha P.</h3>
+                    <span>Student Participant</span>
+                </div>
+                <div class="swiper-slide card">
+                    <div class="quote">❝</div>
+                    <p>Industry on Campus helped me develop strong programming skills, improve teamwork, and understand how software companies manage real client projects.</p>
+                    <div class="stars">★★★★★</div>
+                    <h3>Rahul K.</h3>
+                    <span>Student Participant</span>
+                </div>
+                <div class="swiper-slide card">
+                    <div class="quote">❝</div>
+                    <p>Learning through practical software development instead of only classroom sessions made a huge difference. I graduated with confidence and a strong portfolio.</p>
+                    <div class="stars">★★★★★</div>
+                    <h3>Nandana V.</h3>
+                    <span>Student Participant</span>
+                </div>
+                <div class="swiper-slide card">
+                    <div class="quote">❝</div>
+                    <p>The mentorship provided by GrapesGenix engineers was excellent. The experience gave me valuable technical knowledge that continues to help me in my career.</p>
+                    <div class="stars">★★★★★</div>
+                    <h3>Athira S.</h3>
+                    <span>Student Participant</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+        <p class="section-subtitle center-text">FREQUENTLY ASKED QUESTIONS</p>
+        <h2 class="center-text">Everything You Need To Know</h2>
+
+        <div class="faq-accordion">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What is Industry on Campus?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Industry on Campus is a collaborative initiative by GrapesGenix Technical Solutions Pvt. Ltd. that integrates industrial software development practices into academic institutions, enabling students to gain practical experience while pursuing their education.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Who can participate in Industry on Campus?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Students from Polytechnic, Engineering, Degree, Computer Science, Information Technology, Electronics, and related disciplines may participate through collaborating institutions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What kind of projects do students work on?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Students contribute to enterprise software development, mobile applications, web applications, Artificial Intelligence, Machine Learning, Internet of Things, Embedded Systems, and other real-world technology projects.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do students receive mentorship?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes. Every participant receives continuous guidance from experienced software engineers, project managers, and technical mentors throughout the program.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How does Industry on Campus improve career opportunities?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>The program provides practical development experience, technical portfolios, teamwork exposure, and professional software engineering practices that significantly enhance employability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTITUTIONAL COLLABORATION FINAL SECTION -->
+    <section class="institutional-collaboration-section">
+        <div class="collaboration-card-banner">
+            <h2>Building Strong Industry–Academic Partnerships</h2>
+            <p>
+                GrapesGenix Technical Solutions Pvt. Ltd. continues to collaborate with educational institutions to create future-ready engineers through Industry on Campus. Together, we build an environment where innovation, practical learning, and industry expertise come together to shape successful technology careers.
+            </p>
+           
+        </div>
+    </section>
+
+   
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <p>&copy; 2026 GrapesGenix Technical Solutions Pvt Ltd. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            /* GSAP ScrollTrigger Underline Animation */
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.utils.toArray(".highlight-text").forEach(container => {
+                const path = container.querySelector(".brush-line path");
+                if (path) {
+                    gsap.fromTo(path, 
+                        { strokeDashoffset: 220 },
+                        {
+                            strokeDashoffset: 0,
+                            duration: 1.3,
+                            ease: "power3.out",
+                            scrollTrigger: {
+                                trigger: container,
+                                start: "top 85%"
+                            }
+                        }
+                    );
+                }
+            });
+
+            /* Swiper Initialization */
+            const swiper = new Swiper('.mySwiper', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    768: { slidesPerView: 2, spaceBetween: 25 },
+                    1024: { slidesPerView: 3, spaceBetween: 30 }
+                }
+            });
+
+            /* FAQ Accordion Toggle */
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const faqItem = button.parentElement;
+                    
+                    // Close other items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        if (item !== faqItem) item.classList.remove('active');
+                    });
+
+                    faqItem.classList.toggle('active');
+                });
+            });
+
+            /* Modal Controls */
+            const modal = document.getElementById('enquiryModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const triggerBtns = document.querySelectorAll('.modal-trigger-btn');
+
+            function openModal() {
+                modal.classList.add('active');
+                document.body.classList.add('modal-open');
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+            }
+
+            triggerBtns.forEach(btn => btn.addEventListener('click', openModal));
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        });
+    </script>
+</body>
+</html>

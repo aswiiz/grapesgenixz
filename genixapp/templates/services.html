@@ -1,0 +1,1077 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete IT Solutions & Professional Training | GrapesGenix</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Spartan:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Style Core Linkage Matrix -->
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    
+    <style>
+        /* ==========================================================================
+           PREMIUM SERVICES STRUCTURAL STYLING MATRICES
+           ========================================================================== */
+        :root {
+            --gg-primary: #1B3A87;
+            --gg-primary-rgb: 27, 58, 135;
+            --gg-yellow: #FFC107;
+            --gg-bg-light: #f8fafc;
+            --gg-dark: #0f172a;
+            --gg-text: #475569;
+            --gg-card-bg: #ffffff;
+            --radius-premium: 20px;
+        }
+
+        body {
+            background-color: var(--gg-bg-light);
+            color: var(--gg-text);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .grid-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* [01] Hero System */
+        .services-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #09132e 0%, var(--gg-primary) 100%);
+            padding: 180px 0 100px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+            background-size: 24px 24px;
+            pointer-events: none;
+        }
+
+        .hero-glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 50px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-glass-panel h1 {
+            font-size: 2.85rem;
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+
+        .hero-glass-panel h1 span {
+            color: var(--gg-yellow);
+        }
+
+        .hero-glass-panel p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        /* [02] Core Services Grid Matrix (4 Columns Desktop, 2 Tablet, 1 Mobile) */
+        .core-services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .core-service-card {
+            background: var(--gg-card-bg);
+            border-radius: var(--radius-premium);
+            border: 1px solid rgba(var(--gg-primary-rgb), 0.04);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            padding: 35px 25px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .core-service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--gg-primary);
+            transition: height 0.4s ease;
+            z-index: -1;
+        }
+
+        .core-service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(var(--gg-primary-rgb), 0.1);
+            border-color: rgba(var(--gg-primary-rgb), 0.1);
+        }
+
+        .core-service-card:hover::before {
+            height: 100%;
+            background: linear-gradient(185deg, var(--gg-primary) 0%, #112559 100%);
+        }
+
+        .card-icon-wrap {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: rgba(var(--gg-primary-rgb), 0.06);
+            color: var(--gg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
+        }
+
+        .core-service-card:hover .card-icon-wrap {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--gg-yellow);
+            transform: rotateY(180deg);
+        }
+
+        .core-service-card h3 {
+            font-size: 1.2rem;
+            color: var(--gg-dark);
+            margin-bottom: 12px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .core-service-card p {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--gg-text);
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+
+        .core-service-card:hover h3 { color: #ffffff; }
+        .core-service-card:hover p { color: rgba(255, 255, 255, 0.85); }
+
+        /* [03-05] Feature Row Configurations */
+        .feature-block-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .feature-img-box {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .feature-img-box img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        .checklist-matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--gg-dark);
+            font-size: 0.95rem;
+        }
+
+        .checklist-item i {
+            color: var(--gg-yellow);
+            font-size: 1.1rem;
+        }
+
+        /* Portfolio Cards Integration */
+        .portfolio-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .portfolio-mini-card {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--gg-primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid rgba(var(--gg-primary-rgb), 0.05);
+        }
+
+        /* [06] Structural Timeline Execution */
+        .timeline-wrapper {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .timeline-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gg-primary);
+            color: var(--gg-yellow);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            box-shadow: 0 0 15px rgba(27, 58, 135, 0.2);
+            border: 3px solid #ffffff;
+            z-index: 2;
+            position: relative;
+        }
+
+        .timeline-step h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--gg-dark);
+        }
+
+        /* [07] Dynamic Track Badges */
+        .tracks-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .track-badge-premium {
+            padding: 14px 28px;
+            border-radius: 40px;
+            background: #ffffff;
+            color: var(--gg-primary);
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            border: 1px solid rgba(var(--gg-primary-rgb), 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .track-badge-premium:hover {
+            background: var(--gg-primary);
+            color: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(27, 58, 135, 0.15);
+        }
+
+        /* [08] Grid Ecosystem Technology Block */
+        .stack-flex-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 900px;
+            margin: 40px auto 0;
+        }
+
+        .stack-pill {
+            background: rgba(255,255,255,0.8);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--gg-dark);
+        }
+
+        /* [09] Development Process Grid Array */
+        .process-six-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .process-card-six {
+            background: #ffffff;
+            padding: 25px 15px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            border: 1px solid rgba(var(--gg-primary-rgb), 0.04);
+        }
+
+        .process-card-six i {
+            font-size: 1.5rem;
+            color: var(--gg-primary);
+            margin-bottom: 12px;
+        }
+
+        .process-card-six h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--gg-dark);
+        }
+
+        /* [11] High Fidelity Stats */
+        .stats-strip-container {
+            background: var(--gg-primary);
+            border-radius: 24px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            color: #ffffff;
+            box-shadow: 0 20px 40px rgba(27, 58, 135, 0.2);
+        }
+
+        .stat-box-unit h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--gg-yellow);
+            margin-bottom: 5px;
+        }
+
+        .stat-box-unit p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+        }
+
+        /* [12] Career High Glow CTA */
+        .career-glow-cta {
+            background: linear-gradient(135deg, var(--gg-primary) 0%, #0c1a3d 100%);
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+        }
+
+        .career-glow-cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        /* [13] Modal Popup Styling System */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            position: relative;
+            animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: #f1f5f9;
+            border: none;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            color: #64748b;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s ease;
+        }
+        .modal-close-btn:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+        }
+        .form-control-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: #0f172a;
+            background: #fbfcfd;
+            transition: 0.3s ease;
+        }
+        .form-control-input:focus {
+            outline: none;
+            border-color: #1B3A87;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(27, 58, 137, 0.1);
+        }
+
+        /* [14] Corporate Footer Configuration */
+        .footer-grid-hub {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: 40px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .footer-col h4::after {
+            content: ''; position: absolute; left: 0; bottom: -6px; width: 30px; height: 2px; background: var(--gg-yellow);
+        }
+
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+        .footer-col ul li a:hover { color: var(--gg-yellow); }
+
+        .contact-info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .contact-info-list i { color: var(--gg-yellow); margin-top: 4px; }
+
+        /* Typography & Globals Alignment */
+        .center-heading-block {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .center-heading-block span {
+            color: var(--gg-primary);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .center-heading-block h2 {
+            font-size: 2.2rem;
+            color: var(--gg-dark);
+            margin-top: 10px;
+            font-weight: 700;
+        }
+
+        /* Responsive Media Controllers */
+        @media (max-width: 1024px) {
+            .core-services-grid { grid-template-columns: repeat(2, 1fr); }
+            .timeline-wrapper { grid-template-columns: repeat(3, 1fr); gap: 30px; }
+            .process-six-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-grid-hub { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .feature-block-row { grid-template-columns: 1fr; gap: 40px; }
+            .portfolio-mini-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-strip-container { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .form-grid-2 { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 560px) {
+            .core-services-grid, .timeline-wrapper, .process-six-grid, .stats-strip-container, .portfolio-mini-grid, .footer-grid-hub { grid-template-columns: 1fr; }
+            .hero-glass-panel h1 { font-size: 1.95rem; }
+            .cta-btn-wrapper { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+         [01] HEADER TERMINAL NAVIGATION NAVBAR
+         ========================================================================== -->
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='{% url 'home' %}'">
+            <div class="logo-t">G</div>
+            <div class="logo-text"><strong>GrapesGenix</strong><span>Technical Academy</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'courses' %}">Courses</a>
+            <a href="{% url 'internship' %}">Internship</a>
+            <a href="{% url 'services' %}" class="active">Services</a>
+            <a href="{% url 'team' %}">Our Team</a>
+        </div>
+        <div class="nav-actions">
+            <button class="btn btn-blue" onclick="openEnquiryModal('Services')">Enquiry Terminal</button>
+            <i class="fas fa-bars menu-icon-btn"></i>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+         [02] SERVICES HERO SECTION LAYER
+         ========================================================================== -->
+    <section class="services-hero">
+        <div class="grid-container">
+            <div class="hero-glass-panel">
+                <h1>Complete IT Solutions &<br><span>Professional Training Under One Roof</span></h1>
+                <p>Software Development • Mobile Apps • Web Engineering • Industry on Campus • Internships • Academic Projects</p>
+                
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <button onclick="openEnquiryModal('Services')" class="btn" style="background:#FFC107; color:#0f172a; padding: 12px 28px; border-radius:8px; border:none; font-weight:600; cursor:pointer;">
+                        <i class="fas fa-paper-plane"></i> Submit Enquiry
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [03] CORE SERVICES HUB GENERATION
+         ========================================================================== -->
+    <section class="section-padding">
+        <div class="grid-container">
+            <div class="center-heading-block">
+                <span>OUR CORE EXPERTISE</span>
+                <h2>End-To-End Technology & Ecosystem Delivery</h2>
+            </div>
+
+            <div class="core-services-grid">
+                <!-- Card 1 -->
+                <div class="core-service-card" onclick="openEnquiryModal('Services')" style="cursor: pointer;">
+                    <div class="card-icon-wrap"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile App Development</h3>
+                    <p>We create mobile apps with exceptional interface design and flawless features for both iOS and Android platforms.[cite: 4]</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="core-service-card" onclick="openEnquiryModal('Services')" style="cursor: pointer;">
+                    <div class="card-icon-wrap"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Web Design & Development</h3>
+                    <p>We cater to the web design needs of individuals, businesses small and large, and organizations geared towards any purpose.[cite: 4]</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="core-service-card" onclick="openEnquiryModal('Services')" style="cursor: pointer;">
+                    <div class="card-icon-wrap"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Internship Programs</h3>
+                    <p>We conduct a variety of Internship programs in all Software/Hardware technologies varying from 3 to 6 months.[cite: 4]</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="core-service-card" onclick="openEnquiryModal('Services')" style="cursor: pointer;">
+                    <div class="card-icon-wrap"><i class="fas fa-tools"></i></div>
+                    <h3>Maintenance Contracts</h3>
+                    <p>We have a strong Hardware & Networking team with extensive experience for carrying out maintenance contracts.[cite: 4]</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="core-service-card" onclick="openEnquiryModal('Services')" style="cursor: pointer;">
+                    <div class="card-icon-wrap"><i class="fas fa-university"></i></div>
+                    <h3>Industry on Campus (IoC)</h3>
+                    <p>The Industry on Campus (IoC) initiative bridges the gap between academics and industry by providing students with real-world work exposure while they are still pursuing their studies.[cite: 4]</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="core-service-card" onclick="openEnquiryModal('Projects')" style="cursor: pointer;">
+                    <div class="card-icon-wrap"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Academic Projects</h3>
+                    <p>Comprehensive support for B.Tech, MCA, and Diploma students. We guide project compilation, system designs, and code reviews.[cite: 4]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [04] DETAIL DEEP DIVE BLOCK: CUSTOM SOFTWARE DEVELOPMENT
+         ========================================================================== -->
+    <section class="section-padding" style="background-color: #ffffff;">
+        <div class="grid-container">
+            <div class="feature-block-row">
+                <div>
+                    <span class="section-subtitle" style="color:var(--gg-primary); font-weight:700;">ENTERPRISE LAYER</span>
+                    <h2 style="font-size:2.2rem; color:var(--gg-dark); margin:10px 0 20px; font-weight:700;">Custom Software Development</h2>
+                    <p style="line-height:1.7; margin-bottom:25px;">
+                        We develop scalable enterprise software solutions for educational institutions, businesses, hospitals, industries and startups. Every solution is designed to automate workflows, improve productivity and accelerate business growth.
+                    </p>
+                    <div class="checklist-matrix">
+                        <div class="checklist-item"><i class="fas fa-check-circle"></i> ERP Solutions</div>
+                        <div class="checklist-item"><i class="fas fa-check-circle"></i> CRM Software</div>
+                        <div class="checklist-item"><i class="fas fa-check-circle"></i> Billing Systems</div>
+                        <div class="checklist-item"><i class="fas fa-check-circle"></i> Inventory Management</div>
+                        <div class="checklist-item"><i class="fas fa-check-circle"></i> HRMS</div>
+                        <div class="checklist-item"><i class="fas fa-check-circle"></i> College Management Systems</div>
+                    </div>
+                </div>
+                <div class="feature-img-box">
+                    <img src="{% static 'images/services/software-development.jpg' %}" alt="Custom Software Development Architecture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [05] DETAIL DEEP DIVE BLOCK: MOBILE APP DEVELOPMENT
+         ========================================================================== -->
+    <section class="section-padding">
+        <div class="grid-container">
+            <div class="feature-block-row">
+                <div class="feature-img-box">
+                    <img src="{% static 'images/services/mobile-app.jpg' %}" alt="Mobile App Development Force">
+                </div>
+                <div>
+                    <span class="section-subtitle" style="color:var(--gg-primary); font-weight:700;">NATIVE & CROSS-PLATFORM</span>
+                    <h2 style="font-size:2.2rem; color:var(--gg-dark); margin:10px 0 20px; font-weight:700;">Mobile App Development</h2>
+                    <p style="line-height:1.7;">
+                        We build Android, iOS and Flutter applications with modern UI, cloud integration, secure authentication and high-performance architecture.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [06] DETAIL DEEP DIVE BLOCK: WEB DESIGN & DEVELOPMENT
+         ========================================================================== -->
+    <section class="section-padding" style="background-color: #ffffff;">
+        <div class="grid-container">
+            <div class="feature-block-row">
+                <div>
+                    <span class="section-subtitle" style="color:var(--gg-primary); font-weight:700;">WEB ENGINE</span>
+                    <h2 style="font-size:2.2rem; color:var(--gg-dark); margin:10px 0 20px; font-weight:700;">Web Design & Development</h2>
+                    <p style="line-height:1.7;">
+                        From highly customized content arrays to enterprise portals, we design fast, responsive infrastructures optimized for discovery engine presence.
+                    </p>
+                    <div class="portfolio-mini-grid">
+                        <div class="portfolio-mini-card">Student Portal</div>
+                        <div class="portfolio-mini-card">ERP Dashboard</div>
+                        <div class="portfolio-mini-card">Company Website</div>
+                        <div class="portfolio-mini-card">Hospital System</div>
+                        <div class="portfolio-mini-card">Restaurant Website</div>
+                        <div class="portfolio-mini-card">Placement Portal</div>
+                    </div>
+                </div>
+                <div class="feature-img-box">
+                    <img src="{% static 'images/services/web-development.jpg' %}" alt="Web Systems Architecture Portfolio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [07] INDUSTRY ON CAMPUS HIGH IMPACT SPEC
+         ========================================================================== -->
+    <section class="section-padding">
+        <div class="grid-container">
+            <div class="feature-block-row">
+                <div class="feature-img-box">
+                    <img src="{% static 'images/services/ioc.jpg' %}" alt="Industry On Campus Setup">
+                </div>
+                <div>
+                    <span class="section-subtitle" style="color:var(--gg-primary); font-weight:700;">ACADEMIC HUB</span>
+                    <h2 style="font-size:2.2rem; color:var(--gg-dark); margin:10px 0 20px; font-weight:700;">Industry on Campus (IoC)</h2>
+                    <p style="line-height:1.7; margin-bottom:12px;">
+                        The Industry on Campus (IoC) initiative bridges the gap between academics and industry by providing students with real-world work exposure while they are still pursuing their studies.[cite: 4]
+                    </p>
+                    <p style="line-height:1.7; margin-bottom:12px;">
+                        It equips students with practical knowledge, boosts employability, and nurtures innovation and entrepreneurial skills.[cite: 4]
+                    </p>
+                    <p style="line-height:1.7;">
+                        Through IoC, students can actively contribute to live projects, gain hands-on experience, and become industry-ready professionals by the time they graduate.[cite: 4]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [08] INDUSTRY ON CAMPUS TIMELINE SYSTEM
+         ========================================================================== -->
+    <section class="section-padding" style="background-color: #ffffff; border-top: 1px solid #edf2f7;">
+        <div class="grid-container">
+            <div class="center-heading-block">
+                <span>OPERATIONAL ROUTEMAP</span>
+                <h2>Industry on Campus Timeline</h2>
+            </div>
+            <div class="timeline-wrapper">
+                <div class="timeline-step">
+                    <div class="step-number">01</div>
+                    <h4>Student Registration</h4>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">02</div>
+                    <h4>Skill Assessment</h4>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">03</div>
+                    <h4>Technical Training</h4>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">04</div>
+                    <h4>Real-Time Projects</h4>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">05</div>
+                    <h4>Industry Internship</h4>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">06</div>
+                    <h4>Placement Support</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [09] INTERNSHIP TRACK BLOCK ARRAY
+         ========================================================================== -->
+    <section class="section-padding">
+        <div class="grid-container">
+            <div class="center-heading-block">
+                <span>ACTIVE CAREER TRACKS</span>
+                <h2>Professional Internship Frameworks</h2>
+            </div>
+            <div class="tracks-flex">
+                <div class="track-badge-premium" onclick="openEnquiryModal('Services')">Python Django</div>
+                <div class="track-badge-premium" onclick="openEnquiryModal('Services')">Flutter Development</div>
+                <div class="track-badge-premium" onclick="openEnquiryModal('Services')">MERN Stack</div>
+                <div class="track-badge-premium" onclick="openEnquiryModal('Services')">Java Full Stack</div>
+                <div class="track-badge-premium" onclick="openEnquiryModal('Services')">AI & Machine Learning</div>
+                <div class="track-badge-premium" onclick="openEnquiryModal('Services')">Data Science</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [10] FULL CORPORATE TECHNOLOGY STACK
+         ========================================================================== -->
+    <section class="section-padding" style="background-color: #ffffff;">
+        <div class="grid-container">
+            <div class="center-heading-block">
+                <span>CORE STACK PROTOCOLS</span>
+                <h2>Technologies We Deploy & Educate</h2>
+            </div>
+            <div class="stack-flex-grid">
+                <div class="stack-pill"><i class="fab fa-python" style="color:#3776AB;"></i> Python</div>
+                <div class="stack-pill"><i class="fas fa-code" style="color:#092E20;"></i> Django</div>
+                <div class="stack-pill"><i class="mobile-icon fab fa-flutter" style="color:#02569B;"></i> Flutter</div>
+                <div class="stack-pill"><i class="fab fa-react" style="color:#61DAFB;"></i> React</div>
+                <div class="stack-pill"><i class="fab fa-node-js" style="color:#339933;"></i> Node.js</div>
+                <div class="stack-pill"><i class="fab fa-java" style="color:#ED8B00;"></i> Java</div>
+                <div class="stack-pill"><i class="fab fa-php" style="color:#777BB4;"></i> PHP</div>
+                <div class="stack-pill"><i class="fas fa-database" style="color:#4479A1;"></i> MySQL</div>
+                <div class="stack-pill"><i class="fas fa-leaf" style="color:#47A248;"></i> MongoDB</div>
+                <div class="stack-pill"><i class="fas fa-fire" style="color:#FFCA28;"></i> Firebase</div>
+                <div class="stack-pill"><i class="fab fa-git-alt" style="color:#F05032;"></i> Git</div>
+                <div class="stack-pill"><i class="fab fa-docker" style="color:#2496ED;"></i> Docker</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [11] THE 6-STEP DEVELOPMENT MATRIX
+         ========================================================================== -->
+    <section class="section-padding">
+        <div class="grid-container">
+            <div class="center-heading-block">
+                <span>ENGINEERING PROTOCOL</span>
+                <h2>Our Development Process</h2>
+            </div>
+            <div class="process-six-grid">
+                <div class="process-card-six"><i class="fas fa-search"></i><h4>Requirement Analysis</h4></div>
+                <div class="process-card-six"><i class="fas fa-pencil-ruler"></i><h4>UI/UX Design</h4></div>
+                <div class="process-card-six"><i class="fas fa-code"></i><h4>Development</h4></div>
+                <div class="process-card-six"><i class="fas fa-vial"></i><h4>Testing</h4></div>
+                <div class="process-card-six"><i class="fas fa-cloud-upload-alt"></i><h4>Deployment</h4></div>
+                <div class="process-card-six"><i class="fas fa-tools"></i><h4>Maintenance</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [12] VALUE SPEC PROFILES (WHY CHOOSE US)
+         ========================================================================== -->
+    <section class="section-padding" style="background-color: #ffffff;">
+        <div class="grid-container">
+            <div class="center-heading-block">
+                <span>DIFFERENTIATORS</span>
+                <h2>Why Stakeholders Align with GrapesGenix</h2>
+            </div>
+            <div class="core-services-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="core-service-card" style="text-align: center;">
+                    <div class="card-icon-wrap" style="margin: 0 auto 20px;"><i class="fas fa-user-tie"></i></div>
+                    <h3>Experienced Developers</h3>
+                    <p>Engineered and run entirely by production-line developers deploying real solutions.</p>
+                </div>
+                <div class="core-service-card" style="text-align: center;">
+                    <div class="card-icon-wrap" style="margin: 0 auto 20px;"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Production-Level Training</h3>
+                    <p>Move past theoretical tutorials and work directly inside active production pipelines.</p>
+                </div>
+                <div class="core-service-card" style="text-align: center;">
+                    <div class="card-icon-wrap" style="margin: 0 auto 20px;"><i class="fas fa-handshake"></i></div>
+                    <h3>Placement Assistance</h3>
+                    <p>Comprehensive ecosystem linkages ensuring multi-directional employer referral pipelines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [13] HIGH VALUE REAL-DATA STATISTICS MATRIX
+         ========================================================================== -->
+    <section class="section-padding">
+        <div class="grid-container">
+            <div class="stats-strip-container">
+                <div class="stat-box-unit"><h2>1000+</h2><p>Students Trained</p></div>
+                <div class="stat-box-unit"><h2>500+</h2><p>Projects Completed</p></div>
+                <div class="stat-box-unit"><h2>98%</h2><p>Placement Assistance</p></div>
+                <div class="stat-box-unit"><h2>10+</h2><p>Years Experience</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [14] CAREER CTA INTERFACE LAYER
+         ========================================================================== -->
+    <section class="section-padding" style="padding-top: 0;">
+        <div class="grid-container">
+            <div class="career-glow-cta">
+                <h2>Let's Build Your Career Together</h2>
+                <p>Gain production-level architecture clearance under direct guidance of corporate enterprise engineering specialists.</p>
+                <div class="cta-btn-wrapper">
+                    <button class="btn btn-yellow" onclick="openEnquiryModal('Services')" style="padding: 15px 30px; font-weight:700;">Submit Enquiry</button>
+                    <button class="btn btn-blue" onclick="openEnquiryModal('Contact')" style="padding: 15px 30px; border: 1px solid #ffffff;">Contact Us</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [15] POPUP ENQUIRY FORM MODAL
+         ========================================================================== -->
+    <div class="modal-overlay" id="enquiryModal">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeEnquiryModal()">&times;</button>
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h3 id="modalTitle" style="font-size: 1.6rem; color: #0f172a; margin-bottom: 5px;">Submit Enquiry</h3>
+                <p style="font-size: 0.85rem; color: #64748b;">Fill in your details and our team will contact you shortly.</p>
+            </div>
+
+            <form action="{% url 'submit_general_enquiry' %}" method="POST">
+                {% csrf_token %}
+                
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Full Name</label>
+                        <input type="text" name="name" class="form-control-input" placeholder="e.g. John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Email Address</label>
+                        <input type="email" name="email" class="form-control-input" placeholder="name@domain.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Phone Number</label>
+                        <input type="tel" name="phone" class="form-control-input" placeholder="+91 XXXXX XXXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Category Track</label>
+                        <select name="category" id="categorySelect" class="form-control-input" style="height: 45px;" required>
+                            <!-- Dynamically populated via Javascript -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Subject Heading</label>
+                    <input type="text" name="subject" class="form-control-input" placeholder="Summary of request" required>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; color: #0f172a;">Elaborate Your Requirements</label>
+                    <textarea name="message" class="form-control-input" rows="4" placeholder="Provide system details or query parameters..." style="resize: none;" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-blue" style="width: 100%; padding: 14px; background:#1B3A87; color:#fff; border:none; border-radius:12px; font-weight:600; cursor:pointer;">
+                    Submit Request <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         [16] FULL CORPORATE HIGH DENSITY GLASSMORT FOOTER MAP
+         ========================================================================== -->
+    <footer class="main-footer" style="background-color: #0b111e; padding: 80px 0 30px; color: rgba(255,255,255,0.75);">
+        <div class="grid-container">
+            <div class="footer-grid-hub">
+                <div class="footer-col">
+                    <h4 style="color:#fff;">GrapesGenix</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6; margin-top: 15px; color: rgba(255,255,255,0.6);">
+                        Technology collective specializing in production system engineering, custom automation arrays, and technical human resource acceleration.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="{% url 'home' %}">Home Node</a></li>
+                        <li><a href="{% url 'courses' %}">Courses Directory</a></li>
+                        <li><a href="{% url 'internship' %}">Internship Tracks</a></li>
+                        <li><a href="{% url 'team' %}">Our Experts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Social Channels</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Point Matrix</h4>
+                    <ul class="contact-info-list">
+                        <li><i class="fas fa-map-marker-alt"></i> Corporate HQ, GrapesGenix Technical Solutions, Kerala, India</li>
+                        <li><i class="fas fa-phone-alt"></i> +91 94959 69798</li>
+                        <li><i class="fas fa-envelope"></i> operational.desk@grapesgenix.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Structural Anchor Map Embed -->
+            <div style="margin-top: 40px; border-radius: 16px; overflow: hidden; height: 200px; border: 1px solid rgba(255,255,255,0.1);">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6125.66653884388!2d76.20971470296013!3d10.537507917386288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ee5824f19e7b%3A0xadd58d0710653780!2sGRAPESGENIX%20TECHNICAL%20SOLUTIONS%20PRIVATE%20LIMITED%20%7C%20Software%20Training%20%26%20Internship%20Institute%20Thrissur%20%7C%20Live%20Project%20Center!5e0!3m2!1sen!2sin!4v1782456904690!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; font-size: 0.85rem; color: rgba(255,255,255,0.4);">
+                <p>&copy; 2026 GrapesGenix Technical Solutions Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript Linkage & Modal Logic -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        const categories = ['Services', 'Projects', 'Contact', 'FAQ'];
+
+        function openEnquiryModal(defaultCategory = 'Services') {
+            const modal = document.getElementById('enquiryModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const categorySelect = document.getElementById('categorySelect');
+
+            modalTitle.innerText = `Submit Enquiry`;
+
+            // Clear and populate category select options
+            categorySelect.innerHTML = '';
+            
+            categories.forEach(cat => {
+                const opt = document.createElement('option');
+                opt.value = cat;
+                opt.innerText = cat;
+                if (cat === defaultCategory) {
+                    opt.selected = true;
+                }
+                categorySelect.appendChild(opt);
+            });
+
+            modal.classList.add('active');
+        }
+
+        function closeEnquiryModal() {
+            document.getElementById('enquiryModal').classList.remove('active');
+        }
+
+        // Close modal when clicking on backdrop
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('enquiryModal');
+            if (e.target === modal) {
+                closeEnquiryModal();
+            }
+        });
+    </script>
+</body>
+</html>

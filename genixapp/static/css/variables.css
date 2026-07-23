@@ -1,0 +1,31 @@
+:root {
+    /*--- Color Palette Tokens ---*/
+    --primary-brand: #1B3A87;
+    --primary-glow: rgba(27, 58, 135, 0.15);
+    --secondary-accent: #10B981;
+    --accent-glow: rgba(16, 185, 129, 0.15);
+    --text-main: #1F2937;
+    --text-muted: #4B5563;
+    --text-light: #9CA3AF;
+    --bg-pure: #FFFFFF;
+    --bg-surface: #F9FAFB;
+    --bg-alt: #F3F4F6;
+    --border-color: #E5E7EB;
+
+    /*--- Layout System Tokens ---*/
+    --max-width: 1320px;
+    --section-padding: 120px 0;
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --border-radius-lg: 24px;
+
+    /*--- Shadows & Depth Systems ---*/
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 20px 50px rgba(27, 58, 135, 0.08);
+    --shadow-glow: 0 0 40px rgba(27, 58, 135, 0.15);
+
+    /*--- Animation & Easing Specs ---*/
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.65, 0.265, 1.55);
+}

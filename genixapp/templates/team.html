@@ -1,0 +1,351 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team & Leadership | GrapesGenix</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Spartan:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet Layer -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+    <style>
+        /* ==========================================================================
+           PREMIUM PREMIUM TEAM MODULE ARCHITECTURE
+           ========================================================================== */
+        
+        /* Layout Variables Configuration */
+        :root {
+            --dept-blue: #1b3a89;
+            --dept-cyan: #00b4d8;
+            --dept-purple: #7209b7;
+            --dept-orange: #f77f00;
+            --dept-green: #38b000;
+            --dept-pink: #f72585;
+            --dept-navy: #03045e;
+            --gold-glow: #ffc72c;
+        }
+
+        .team-section-premium {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        /* Responsive 4-Column Layout */
+        .premium-team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 270px);
+            gap: 30px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        /* Strict Dimension Control Card */
+        .premium-team-card {
+            width: 270px;
+            height: 420px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            background: #111;
+            transform: translateY(0);
+            transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), 
+                        box-shadow 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            
+            /* Staggered entry animation variables initialization */
+            opacity: 0;
+            animation: premiumFadeUp 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        /* Portrait Image Structure */
+        .premium-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transform: scale(1);
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Techolas Dark Gradient Overlay Setup */
+        .premium-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, 
+                rgba(0, 0, 0, 0.95) 0%, 
+                rgba(0, 0, 0, 0.6) 45%, 
+                rgba(0, 0, 0, 0.1) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px 20px;
+            z-index: 2;
+            transition: background 0.45s ease;
+        }
+
+        /* Text Elements Formatting */
+        .premium-member-name {
+            font-family: 'Poppins', sans-serif;
+            color: var(--white);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            line-height: 1.2;
+            transition: color 0.3s ease;
+        }
+
+        .premium-yellow-line {
+            width: 35px;
+            height: 3px;
+            background: var(--secondary); /* Brand Gold/Yellow */
+            border: none;
+            margin: 0 0 10px 0;
+            transition: width 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .premium-member-position {
+            font-family: 'Spartan', sans-serif;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.82rem;
+            font-weight: 500;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Department Badge Matrix */
+        .premium-dept-badge {
+            align-self: flex-start;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+            transition: all 0.4s ease;
+        }
+
+        /* Explicit Department-Color Tokens assignment */
+        .badge-soft-dev   { background-color: var(--dept-blue); }
+        .badge-it-consult { background-color: var(--dept-navy); }
+        .badge-flutter    { background-color: var(--dept-cyan); }
+        .badge-python     { background-color: var(--dept-blue); }
+        .badge-mern       { background-color: var(--dept-green); }
+
+        /* ==========================================================================
+           INTERACTION & HOVER DYNAMICS
+           ========================================================================== */
+        
+        .premium-team-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 22px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .premium-team-card:hover .premium-card-img {
+            transform: scale(1.08);
+        }
+
+        .premium-team-card:hover .premium-card-overlay {
+            background: linear-gradient(to top, 
+                rgba(0, 0, 0, 0.85) 0%, 
+                rgba(0, 0, 0, 0.45) 50%, 
+                rgba(0, 0, 0, 0.0) 100%);
+        }
+
+        .premium-team-card:hover .premium-member-name {
+            color: var(--secondary); /* Transitions to Yellow/Gold */
+        }
+
+        .premium-team-card:hover .premium-yellow-line {
+            width: 60px;
+            box-shadow: 0 0 10px var(--secondary);
+        }
+
+        .premium-team-card:hover .premium-dept-badge {
+            box-shadow: 0 0 12px var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        /* ==========================================================================
+           STAGGERED ANIMATION MATRICES
+           ========================================================================== */
+        @keyframes premiumFadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        .stagger-7 { animation-delay: 0.7s; }
+
+        /* ==========================================================================
+           MEDIA QUERY SYSTEM LAYOUTS
+           ========================================================================== */
+        @media (max-width: 1220px) {
+            .premium-team-grid {
+                grid-template-columns: repeat(2, 270px);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .premium-team-grid {
+                grid-template-columns: repeat(1, 270px);
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body style="background: var(--bg-light);">
+
+    <!-- ==========================================================================
+         [01] NAVIGATION DECK
+         ========================================================================== -->
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='{% url 'home' %}'">
+            <div class="logo-t">G</div>
+            <div class="logo-text"><strong>GrapesGenix</strong><span>Technical Academy</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'courses' %}">Courses</a>
+            <a href="{% url 'internship' %}">Internship</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'projects' %}">Projects</a>
+        </div>
+        <div class="nav-actions">
+            <button class="btn btn-blue enquiry-modal-trigger-btn">Connect With Us</button>
+            <i class="fas fa-bars menu-icon-btn"></i>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+         [02] PREMIUM TEAM SECTION MODULE
+         ========================================================================== -->
+    <section class="team-section-premium">
+        <div class="container" style="display: block;">
+            
+            <!-- Structural Section Title Block -->
+            <div class="center-text">
+                <span class="section-subtitle">OUR TEAM</span>
+                <h2>Meet Our Industry Experts</h2>
+                <p style="max-width: 600px; margin: 15px auto 0;">
+                    Learn from experienced software engineers, technical architects, and industry mentors.
+                </p>
+            </div>
+            
+            <!-- Responsive Grid Layer -->
+            <div class="premium-team-grid">
+                
+                <!-- Card 1: Gopikrishnan P G -->
+                <div class="premium-team-card stagger-1">
+                    <img src="{% static 'assets/images/team/gopikrishnan.jpg' %}" alt="Gopikrishnan P G" class="premium-card-img">
+                    <div class="premium-card-overlay">
+                        <h3 class="premium-member-name">Gopikrishnan P G</h3>
+                        <hr class="premium-yellow-line">
+                        <div class="premium-member-position">CEO</div>
+                        <div class="premium-dept-badge badge-soft-dev">Software Development</div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Aparna P K -->
+                <div class="premium-team-card stagger-2">
+                    <img src="{% static 'assets/images/team/aparna.jpg' %}" alt="Aparna P K" class="premium-card-img">
+                    <div class="premium-card-overlay">
+                        <h3 class="premium-member-name">Aparna P K</h3>
+                        <hr class="premium-yellow-line">
+                        <div class="premium-member-position">Managing Director</div>
+                        <div class="premium-dept-badge badge-soft-dev">Software Development</div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Rangaraj T R -->
+                <div class="premium-team-card stagger-3">
+                    <img src="{% static 'assets/images/team/rangaraj_.jpg' %}" alt="Rangaraj T R" class="premium-card-img">
+                    <div class="premium-card-overlay">
+                        <h3 class="premium-member-name">Rangaraj T R</h3>
+                        <hr class="premium-yellow-line">
+                        <div class="premium-member-position">Managing Director</div>
+                        <div class="premium-dept-badge badge-soft-dev">IT Consultant</div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Gopika Suveesh -->
+                <div class="premium-team-card stagger-4">
+                    <img src="{% static 'assets/images/team/gopika.jpg' %}" alt="Gopika Suveesh" class="premium-card-img">
+                    <div class="premium-card-overlay">
+                        <h3 class="premium-member-name">Gopika Suveesh</h3>
+                        <hr class="premium-yellow-line">
+                        <div class="premium-member-position">Senior Mobile App Developer</div>
+                        <div class="premium-dept-badge badge-flutter">Flutter Development</div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Bincy Rahul -->
+                <div class="premium-team-card stagger-5">
+                    <img src="{% static 'assets/images/team/bincy.jpg' %}" alt="Bincy Rahul" class="premium-card-img">
+                    <div class="premium-card-overlay">
+                        <h3 class="premium-member-name">Bincy Rahul</h3>
+                        <hr class="premium-yellow-line">
+                        <div class="premium-member-position">Senior Full Stack Developer</div>
+                        <div class="premium-dept-badge badge-python">Python Full Stack</div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Nivia K S -->
+                <div class="premium-team-card stagger-6">
+                    <img src="{% static 'assets/images/team/nivia.jpg' %}" alt="Nivia K S" class="premium-card-img">
+                    <div class="premium-card-overlay">
+                        <h3 class="premium-member-name">Nivia K S</h3>
+                        <hr class="premium-yellow-line">
+                        <div class="premium-member-position">Senior Full Stack Developer</div>
+                        <div class="premium-dept-badge badge-mern">MERN Stack</div>
+                    </div>
+                </div>
+
+                <!-- Card 7: Praveena V P -->
+                <div class="premium-team-card stagger-7">
+                    <img src="{% static 'assets/images/team/praveena.jpg' %}" alt="Praveena V P" class="premium-card-img">
+                    <div class="premium-card-overlay">
+                        <h3 class="premium-member-name">Praveena V P</h3>
+                        <hr class="premium-yellow-line">
+                        <div class="premium-member-position">Full Stack Developer</div>
+                        <div class="premium-dept-badge badge-python">Python Full Stack</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [03] GLOBAL FOOTER
+         ========================================================================== -->
+    <footer class="main-footer">
+        <div class="footer-bottom" style="border: none; padding-top: 0; margin-top: 0;">
+            <p>&copy; 2026 GrapesGenix Technical Academy. All rights reserved.</p>
+            <div class="bottom-policy-links">
+                <a href="{% url 'home' %}">Return to Primary Domain Hub</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

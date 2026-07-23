@@ -1,0 +1,337 @@
+/*============================================================================
+  SECTION STYLESHEET: ABOUT & CREDIBILITY SYSTEM
+============================================================================*/
+
+/*--- 1. Trusted By Section Styles ---*/
+.trusted-marquee-section {
+    background: var(--bg-pure);
+    border-bottom: 1px solid var(--border-color);
+    padding: 32px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+}
+
+.marquee-wrapper-box {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.trust-badge-meta {
+    flex-shrink: 0;
+    border-right: 2px solid var(--border-color);
+    padding-right: 48px;
+}
+
+.star-rating-cluster {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+
+.star-icon {
+    color: #F59E0B;
+    font-size: 16px;
+}
+
+.trust-subtitle-text {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+}
+
+/* Infinite Marquee Running Track Setup */
+.infinite-marquee-viewport {
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-track-container {
+    display: flex;
+    gap: 64px;
+    width: max-content;
+    animation: marquee-run-loop 25s linear infinite;
+}
+
+.marquee-logo-node {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-light);
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.marquee-logo-node .logo-accent {
+    color: var(--text-main);
+    margin-right: 4px;
+}
+
+@keyframes marquee-run-loop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+
+/*--- 2. About GrapesGenix Narrative Section Styles ---*/
+.about-narrative-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* Left Interactive Graphics Matrix Layout */
+.about-graphic-workspace {
+    position: relative;
+    padding: 40px;
+}
+
+.image-mask-wrapper {
+    position: relative;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    z-index: 2;
+}
+
+.about-hero-image {
+    width: 100%;
+    height: 580px;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.image-mask-wrapper:hover .about-hero-image {
+    transform: scale(1.04);
+}
+
+.image-overlay-glass {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, rgba(27, 58, 135, 0.1));
+    pointer-events: none;
+}
+
+/* Floating Realtime Analytics HUD Component */
+.floating-hud-experience-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 24px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    animation: float-badge-y 6s ease-in-out infinite;
+}
+
+.hud-inner-glow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.hud-big-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--primary-brand);
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.hud-label-stack span {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.hud-label-stack span:last-child {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Secondary Micro Floating Widget Component */
+.floating-hud-mini-pill {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    z-index: 3;
+    background: var(--bg-pure);
+    padding: 12px 20px;
+    border-radius: 100px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: float-badge-y 6s ease-in-out infinite 3s;
+}
+
+.pill-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--secondary-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--secondary-accent);
+}
+
+.pill-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* Decorative Component Graphics Matrix Points */
+.decorative-matrix-dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 180px;
+    height: 180px;
+    background-image: radial-gradient(var(--text-light) 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+    opacity: 0.25;
+    z-index: 1;
+}
+
+/* Right Content Column Structural Flow Styles */
+.about-content-workspace .gg-section-header {
+    margin-bottom: 40px;
+}
+
+.pulse-indicator-node {
+    width: 6px;
+    height: 6px;
+    background: var(--primary-brand);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.enterprise-strategic-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-bottom: 44px;
+}
+
+.pillar-card-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.pillar-icon-shield, .pillar-icon-shield-accent {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.pillar-icon-shield {
+    background: var(--primary-glow);
+    color: var(--primary-brand);
+}
+
+.pillar-icon-shield-accent {
+    background: var(--accent-glow);
+    color: var(--secondary-accent);
+}
+
+.pillar-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.pillar-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+/* Metrics Dashboard Cluster Components */
+.about-metrics-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 36px;
+    margin-bottom: 44px;
+}
+
+.metric-number {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary-brand);
+    margin-bottom: 4px;
+}
+
+.metric-tag {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* Design System CTA Action Button Modules */
+.primary-system-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--primary-brand);
+    color: var(--bg-pure);
+    padding: 16px 36px;
+    border-radius: var(--border-radius-sm);
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 4px 14px rgba(27, 58, 135, 0.3);
+}
+
+.primary-system-btn:hover {
+    background: #142B66;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(27, 58, 135, 0.4);
+}
+
+.arrow-svg-icon {
+    transition: var(--transition-smooth);
+}
+
+.primary-system-btn:hover .arrow-svg-icon {
+    transform: translateX(5px);
+}
+
+/* Ambient Vector Lighting System Drops */
+.vector-blob-glow {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: var(--primary-glow);
+    filter: blur(120px);
+    -webkit-filter: blur(120px);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.blob-position-1 { top: -10%; right: -5%; }
+.blob-position-2 { bottom: 10%; left: -10%; opacity: 0.6; }
+
+/* Dynamic Float Animations Keyframes */
+@keyframes float-badge-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}

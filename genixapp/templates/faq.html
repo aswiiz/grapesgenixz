@@ -1,0 +1,381 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions | GrapesGenix</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Spartan:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Primary Style Core Dependency -->
+     <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    
+    <style>
+        /* FAQ Page Extension UI Architecture */
+        .faq-hero {
+            position: relative;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            background: var(--bg-dark-gradient);
+            padding: 160px 0 80px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .particle-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+        
+        .faq-section {
+            padding: 90px 0;
+            background: var(--bg-light);
+        }
+        
+        /* Premium Accordion Container Layout */
+        .faq-wrapper {
+            max-width: 860px;
+            margin: 50px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .faq-item {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(27, 58, 137, 0.04);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 30px;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            outline: none;
+            transition: var(--transition);
+        }
+        
+        .faq-question i {
+            font-size: 0.95rem;
+            color: var(--text);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s;
+            background: rgba(0, 0, 0, 0.03);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            background: #fafbfc;
+        }
+        
+        .faq-answer p {
+            padding: 0 30px 28px 30px;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--text);
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* Active Accordion Dynamic States */
+        .faq-item.active {
+            box-shadow: 0 15px 35px rgba(27, 58, 137, 0.08);
+            border-color: rgba(27, 58, 137, 0.1);
+        }
+        .faq-item.active .faq-question {
+            color: var(--primary);
+            background: rgba(27, 58, 137, 0.01);
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(135deg);
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* CTA Panel Block */
+        .faq-contact {
+            padding: 60px 0 100px;
+            background: var(--bg-light);
+        }
+        .faq-contact-box {
+            background: var(--bg-dark-gradient);
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-contact-box h3 {
+            color: var(--white);
+            font-size: 1.85rem;
+            margin-bottom: 12px;
+        }
+        .faq-contact-box p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 580px;
+            margin: 0 auto 30px;
+            font-size: 0.95rem;
+        }
+        .faq-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body style="background: var(--bg-light);">
+
+    <!-- ==========================================================================
+         [01] NAVIGATION HUB
+         ========================================================================== -->
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='index.html'">
+            <div class="logo-t">G</div>
+            <div class="logo-text"><strong>GrapesGenix</strong><span>Technical Ecosystem</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'courses' %}">Courses</a>
+            <a href="{% url 'internship' %}">Internship</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </div>
+        <div class="nav-actions">
+            <button class="btn btn-blue" onclick="window.location.href='{% url 'contact' %}'">Enquiry Terminal</button>
+            <i class="fas fa-bars menu-icon-btn"></i>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+         [02] FAQ HERO HEADER
+         ========================================================================== -->
+    <section class="faq-hero">
+        <div class="particle-overlay"></div>
+        <div class="container" style="grid-template-columns: 1fr;">
+            <div class="glass-hero-card" style="max-width: 800px; margin: 0 auto;">
+                <span class="section-subtitle" style="color: var(--secondary); letter-spacing: 2px;">FAQ PORTAL</span>
+                <h1 style="color: var(--white); font-size: 42px; margin: 15px 0 20px; line-height: 1.25;">Have Questions? We're Here to Help.</h1>
+                <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto;">
+                    Find answers to common questions about our training programs, industrial internships, software development workflows, placement operations, and certifications.
+                </p>
+            </div>
+        </div>
+        <div class="wave-bottom" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; background: var(--bg-light); clip-path: ellipse(60% 100% at 50% 100%);"></div>
+    </section>
+
+    <!-- ==========================================================================
+         [03] ACCORDION DECK MODULE
+         ========================================================================== -->
+    <section id="faq" class="faq-section">
+        <div class="container" style="grid-template-columns: 1fr;">
+            
+            <div class="center-text">
+                <span class="section-subtitle">RESOLVED MATRIX</span>
+                <h2>Frequently Asked <span style="color: var(--primary);">Questions</span></h2>
+                <p style="max-width: 600px; margin: 15px auto 0;">
+                    Clear, detailed processing maps answering key programmatic queries regarding core corporate tracks and student training systems.
+                </p>
+            </div>
+
+            <div class="faq-wrapper">
+
+                <!-- FAQ Item 1 (Active by Default) -->
+                <div class="faq-item active">
+                    <button class="faq-question">
+                        <span>What is GrapesGenix Technical Solutions Pvt Ltd?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer" style="max-height: 200px;">
+                        <p>
+                            GrapesGenix Technical Solutions Pvt Ltd is a technology company established in 2015 that specializes in enterprise software development, web and mobile application development, internships, Industry on Campus (IoC), IT training, and placement support.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Which courses do you offer?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            We provide industry-focused programs including Python Full Stack, MERN Stack, Flutter, Java Full Stack, AI & Machine Learning, Data Science, Cyber Security, UI/UX, Software Testing, and Embedded Systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you provide internship programs?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Yes. Our internship programs provide live project experience, mentoring from active software engineers, verified company clearances, and real production engineering exposure.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Will I work on live projects?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Absolutely. Students and interns participate directly in real software deployment pipelines under the guidance of experienced developers, helping them build production-ready skills.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you provide placement assistance?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Yes. We offer robust placement assistance including professional resume building, technical architecture mock interviews, aptitude training arrays, portfolio optimization, and structured employer referrals.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What is Industry on Campus (IoC)?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Industry on Campus is our initiative to bring real software development workloads, structural internships, and industrial mentoring direct to engineering locations, maximizing job readiness metrics prior to graduation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you provide software development services?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Yes. We develop custom enterprise software platforms, operational ERP infrastructures, microservices, native mobile applications, secure cloud pipelines, and optimized business automation engines.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How can I join GrapesGenix?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            You can schedule a physical review at our campus, initiate contacts over the structural site channels, query the voice call center, or transmit an enquiry data packet directly via our forms.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [04] NEED MORE HELP CALL-TO-ACTION
+         ========================================================================== -->
+    <section class="faq-contact">
+        <div class="container" style="grid-template-columns: 1fr;">
+            <div class="faq-contact-box">
+                <h3>Still Have Questions?</h3>
+                <p>
+                    Our technical counseling team is ready to help you choose the correct course architecture, internship line, or target enterprise solution.
+                </p>
+                <div class="faq-buttons">
+                    <a href="{% url 'contact' %}" class="btn btn-blue">Contact Us Router</a>
+                    <a href="{% url 'courses' %}" class="btn btn-yellow">Explore Active Courses</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         [05] GLOBAL FOOTER
+         ========================================================================== -->
+    <footer class="main-footer">
+        <div class="footer-bottom" style="border: none; padding-top: 0; margin-top: 0;">
+            <p>&copy; 2026 GrapesGenix Technical Solutions Pvt Ltd. All rights reserved.</p>
+            <div class="bottom-policy-links">
+                <a href="{% url 'home' %}">Return to Primary Node Base</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         [06] INTERACTIVE ACCORDION ENGINE
+         ========================================================================== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const faqItems = document.querySelectorAll(".faq-item");
+
+            faqItems.forEach(item => {
+                const questionButton = item.querySelector(".faq-question");
+                const answerBox = item.querySelector(".faq-answer");
+
+                questionButton.addEventListener("click", () => {
+                    const isCurrentlyActive = item.classList.contains("active");
+
+                    // Clear existing open states smoothly
+                    faqItems.forEach(innerItem => {
+                        innerItem.classList.remove("active");
+                        innerItem.querySelector(".faq-answer").style.maxHeight = "0px";
+                    });
+
+                    // Set target state if it wasn't previously open
+                    if (!isCurrentlyActive) {
+                        item.classList.add("active");
+                        answerBox.style.maxHeight = answerBox.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
