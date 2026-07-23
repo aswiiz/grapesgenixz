@@ -1,10 +1,10 @@
 {
-  "builds": [
-    {
-      "src": "grapes/wsgi.py",
-      "use": "@vercel/python"
+  "version": 2,
+  "functions": {
+    "grapes/wsgi.py": {
+      "runtime": "@vercel/python"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
