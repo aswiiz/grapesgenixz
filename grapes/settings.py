@@ -2,6 +2,12 @@
 Django settings for grapes project.
 """
 
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 import os
 from pathlib import Path
 
